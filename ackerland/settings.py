@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+# credit: https://saralgyaan.com/posts/best-way-to-start-a-django-project-with-github-integration/
+from decouple import config
+SECRET_KEY = config('SECRET_KEY')
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,7 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # My Apps
+    'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
 ]
+# credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
+AUTH_USER_MODEL = 'timeline.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +68,7 @@ ROOT_URLCONF = 'ackerland.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,6 +125,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+TIME_INPUT_FORMATS = [
+    '%H:%M',        # '14:30'
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
