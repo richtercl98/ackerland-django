@@ -47,11 +47,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Installed third party Apps
+    'phonenumber_field',
+
     # My Apps
     'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
+    'accounts',
 ]
 # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
-AUTH_USER_MODEL = 'timeline.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

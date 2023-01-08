@@ -12,7 +12,7 @@ class BaseUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = User
-        fields = ['vorname', 'nachname', 'bezahlt']
+        fields = ['username', 'vorname', 'nachname', 'eingeladen_von', 'telefonnummer']
 
 
 # TODO: better name
@@ -20,4 +20,4 @@ class BaseUserChangeForm(UserChangeForm):
 
     class Meta(UserChangeForm):
         model = User
-        fields = ['vorname', 'nachname', 'bezahlt']
+        fields = ['vorname', 'nachname']

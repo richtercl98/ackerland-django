@@ -1,15 +1,5 @@
 from django.db import models
 
-# credit user model abstraction: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
-
-from django.contrib.auth.models import AbstractUser
-
-
-class User(AbstractUser):
-    vorname = models.CharField(max_length=64, null=True, blank=True)
-    nachname = models.CharField(max_length=64, null=True, blank=True)
-    bezahlt = models.BooleanField(default=False)
-
 
 class Floor(models.Model):
     name = models.CharField(max_length=128)
