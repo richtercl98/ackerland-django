@@ -44,18 +44,18 @@
                 "phonenumberslite"
             ],
             "hashes": [
-                "sha256:969bbcab203d697ea44c38726bdc7d72ac9f1ba397694b9f57422b471ad73590",
-                "sha256:9e2b302f239e4703fa9030e44833db5eb524a731335fd77b0b703bd352fbe8d0"
+                "sha256:9edad2b2602af25f2aefc73c4cf53eaf7abf9e17d73c1c4372bd3052bebb26f9",
+                "sha256:de3e47b986b4959949762c16fd8fe26b3e462ef3e5531ed00950bd20c698576a"
             ],
             "index": "pypi",
-            "version": "==7.0.1"
+            "version": "==7.0.2"
         },
         "phonenumberslite": {
             "hashes": [
-                "sha256:2b7452fe69c907b7638ff4cf7f8a773a6dfce26bf32d67ebf4dc74d5e31abb79",
-                "sha256:b7f56b77711e6b99c7890f20f1aaa705d9fe2514215446b8426c8515c198775f"
+                "sha256:44cbb13581122164cd8a83b40f12db854277e8a5f9c6e22bd8dc2d8aa98e3260",
+                "sha256:469eb263160e243aa02fff643502698f99e77bcb6478e9aaa7115838006be122"
             ],
-            "version": "==8.13.3"
+            "version": "==8.13.4"
         },
         "sqlparse": {
             "hashes": [
