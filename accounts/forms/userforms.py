@@ -6,13 +6,22 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from ..models import User
 
+from django.core.exceptions import ValidationError
+
 # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
 # TODO: better name
 class BaseUserCreationForm(UserCreationForm):
 
+    def clean_email(self):
+        email = self.cleaned_data['email'].lower()
+        users_with_same_email = User.objects.filter(email=email)
+        if users_with_same_email.count():
+            raise ValidationError('E-Mail "%(email)s" already taken.', code='email-taken', params={'email' : email})
+        return email
+
     class Meta(UserCreationForm):
         model = User
-        fields = ['username', 'vorname', 'nachname', 'eingeladen_von', 'telefonnummer']
+        fields = ['username', 'vorname', 'nachname', 'email', 'eingeladen_von', 'telefonnummer']
 
 
 # TODO: better name

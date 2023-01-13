@@ -12,6 +12,7 @@ class User(AbstractUser):
     vorname = models.CharField(max_length=64, null=True, blank=True)
     nachname = models.CharField(max_length=64, null=True, blank=True)
     telefonnummer = PhoneNumberField(blank=True)
+    email = models.EmailField(max_length=256)
 
     eingeladen_von = models.ForeignKey('Orga', on_delete=models.SET_NULL, null=True, related_name='eingeladen_von')
 
