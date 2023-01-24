@@ -19,8 +19,11 @@ class BaseUserAdmin(UserAdmin):
     ) #this will allow to change these fields in admin module
 
 
+class GuestAdmin(admin.ModelAdmin):
+    list_display = ['user', 'bezahlt']
+    # fieldsets = admin.ModelAdmin.fieldsets + ((None, {'fields' : ('user', 'bezahlt')}),)
 admin.site.register(User, BaseUserAdmin)
-admin.site.register(Guest)
+admin.site.register(Guest, GuestAdmin)
 admin.site.register(Orga)
 admin.site.register(Volunteer)
 admin.site.register(Artist)

@@ -13,16 +13,11 @@ from django.core.exceptions import ValidationError
 # TODO: better name
 class BaseUserCreationForm(UserCreationForm):
 
-<<<<<<< HEAD
     def __init__(self, *args, **kwargs):
         super(BaseUserCreationForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
 
-    class Meta(UserCreationForm):
-        model = User
-        fields = ['username', 'vorname', 'nachname', 'eingeladen_von', 'telefonnummer']
-=======
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
         users_with_same_email = User.objects.filter(email=email)
@@ -34,7 +29,6 @@ class BaseUserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'vorname', 'nachname', 'email', 'eingeladen_von', 'telefonnummer']
 
->>>>>>> ad6faf264ee52929786f4a83f188aee8872c16d2
 
 # TODO: better name
 class BaseUserChangeForm(UserChangeForm):

@@ -35,9 +35,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%f4!-fh4252&5$1$c+=%l4@r7spnh&y7jy&1o=trtl-cgrbxs7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+'talu-festival.de',
+'www.talu-festival.de',
+'localhost',
+'127.0.0.1']
 
 
 # Application definition
@@ -64,7 +68,9 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 # Fix bug in call of reverse() when new registrated user click on verification link
-LOGIN_URL = 'login'
+LOGIN_URL = 'home'
+LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "home"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
