@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c2b9b63f5f827d0283e48b37b92151c4d448d55580fcf70129fcedc7254e096c"
+            "sha256": "b54db563041edc640a7ac9acbc470b19ad4d47003208222212360da75f5379ef"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -49,6 +49,14 @@
             ],
             "index": "pypi",
             "version": "==7.0.2"
+        },
+        "django-verify-email": {
+            "hashes": [
+                "sha256:4b21689fe135aa3fd0ccbe14985fe332efd3205d18813e327f159e6a4b5f564c",
+                "sha256:98b2b8ca0c775f251d0fa1b1aa75fedbf2443714fe9ab4545331a689fcedea61"
+            ],
+            "index": "pypi",
+            "version": "==2.0.3"
         },
         "phonenumberslite": {
             "hashes": [

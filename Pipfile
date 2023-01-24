@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 django-decouple = "*"
 django-phonenumber-field = {extras = ["phonenumberslite"], version = "*"}
+django-verify-email = "*"
 
 [dev-packages]
 

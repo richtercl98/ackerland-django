@@ -27,4 +27,5 @@ urlpatterns = [
     path('timeline/', include(('timeline.urls', 'timeline'))),
     path('accounts/', include(('accounts.urls', 'accounts'))),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('verification/', include('verify_email.urls')),
 ]

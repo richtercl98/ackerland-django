@@ -10,16 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # credit: https://saralgyaan.com/posts/best-way-to-start-a-django-project-with-github-integration/
 from decouple import config
+# credit: https://pypi.org/project/Django-Verify-Email/
+from django.core.mail import send_mail
+
 SECRET_KEY = config('SECRET_KEY')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
 
     # Installed third party Apps
     'phonenumber_field',
+    'verify_email.apps.VerifyEmailConfig',  # credit: https://pypi.org/project/Django-Verify-Email/
 
     # My Apps
     'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
@@ -56,6 +60,11 @@ INSTALLED_APPS = [
 ]
 # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
 AUTH_USER_MODEL = 'accounts.User'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+# Fix bug in call of reverse() when new registrated user click on verification link
+LOGIN_URL = 'login'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -68,6 +77,20 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ackerland.urls'
+
+# credit: https://pypi.org/project/Django-Verify-Email/
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.gmx.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = config('EMAIL_ID')
+EMAIL_HOST_PASSWORD = config('EMAIL_PW')
+
+DEFAULT_FROM_EMAIL = config('EMAIL_ID')
+
+PHONENUMBER_DEFAULT_REGION = 'DE'
 
 TEMPLATES = [
     {
