@@ -189,7 +189,10 @@
                   
                   {% if user.is_authenticated %}
                   <div class="tab-pane fade show active" id="pills-status" role="tabpanel" aria-labelledby="pills-status-tab">
-
+                    <p>Ticket: 20€</p>
+                    <p>Kontoinhaber: Clemens Richter</p>
+                    <p>IBAN: DE79 1309 1054 0008 2070 11</p>
+                    <p>Betreff: Talu, {{user.vorname}}, {{user.nachname}}</p>
                     <p>Bezahlstatus: In Bearbeitung...</p>
                 </div>
                 <div class="tab-pane fade" id="pills-logout" role="tabpanel" aria-labelledby="pills-logout-tab">
@@ -199,7 +202,6 @@
                       <button class="btn btn-dark" type="submit">Logout</button>
                     </form>
                   </div>
-
                     {% else %}
                   <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
 

@@ -32,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%f4!-fh4252&5$1$c+=%l4@r7spnh&y7jy&1o=trtl-cgrbxs7'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     # Installed third party Apps
     'phonenumber_field',
     'verify_email.apps.VerifyEmailConfig',  # credit: https://pypi.org/project/Django-Verify-Email/
+    ''
 
     # My Apps
     'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
@@ -80,6 +81,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     # credit:https://stackoverflow.com/questions/5836674/why-does-debug-false-setting-make-my-django-static-files-access-fail
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'ackerland.urls'
@@ -171,9 +174,15 @@ STATIC_URL = 'static/'
 STATIC_ROOT = 'staticfiles/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'templates'),
-    os.path.join(BASE_DIR, 'ackerland-frontend/app/')
+    os.path.join(BASE_DIR, 'templates/'),
+    os.path.join(BASE_DIR, 'ackerland-frontend/app/'),
+    # os.path.join(BASE_DIR, "static/"),
 ]
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
