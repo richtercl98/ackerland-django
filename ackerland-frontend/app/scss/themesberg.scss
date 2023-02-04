@@ -14,6 +14,57 @@
 }
 
 
+#burger {
+
+}
+#burger::after {
+  content: "\f0c9";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #000;
+}
+
+#back-to-top {
+  display: inline-block;
+  background-color: #EFC859;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+  text-decoration: none;
+}
+#back-to-top::after {
+  content: "\f077";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+#back-to-top:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#back-to-top:active {
+  background-color: #555;
+}
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 /*
  * Base structure
  */
@@ -23,8 +74,70 @@
  */
 
 header {
-  border-bottom: 0.1rem solid #9CC5A1;
+  background-color: #D2D8F0;
+  background-image: url("../img/ackerland-header.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 100%;
+/*  border-bottom: 0.1rem solid #9CC5A1;*/
+  height: 80px;
+}
 
+#home-link{
+  text-decoration: none;
+}
+#home-link:hover{
+  cursor: pointer;
+}
+
+#login-button{
+  background-color: #EE767A;
+  border: 1px solid #EE767A;
+
+}
+#login-button:hover{
+  background-color: white;
+  color: #EE767A !important;
+  border: 1px solid #EE767A;
+  transition-duration: 200ms;
+}
+
+
+#user-icon {
+  background-color: #EE767A;
+  border: 1px solid #EE767A;
+  padding: 8px 12px 8px 12px;
+  margin-left: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.4em;
+}
+#user-icon::before {
+  content: "\f007\00a0";
+  font-family: FontAwesome;
+  font-weight: thin;
+}
+#user-icon:hover {
+  color: #EE767A;
+  cursor: pointer;
+  background-color: white;
+  transition-duration: 200ms;
+}
+.dropdown{
+  ul{
+    font-size: 1.2em;
+  }
+}
+
+#sun{
+    background-color: #EE767A;
+    position: relative;
+    left: 50%;
+    bottom:0%;
+    transform: translate(-50%, 0);
+    height: 5rem;
+    width: 10rem;
+    border-radius: 7.5rem 7.5rem 0 0;
 }
 
 .nav-masthead .nav-link {
@@ -55,7 +168,7 @@ header {
 
 body{
   /*background-color: #F0EAD2;*/
-  font-family: Futura;
+  font-family: Futura-pt, sans-serif;
 }
 
 #hero{
@@ -64,7 +177,7 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 25% 50%;
-  border-bottom: 0.1rem solid #9CC5A1;
+/*  border-bottom: 0.1rem solid #9CC5A1;*/
 }
 #vision{
   background-color: #EE767A;
@@ -96,11 +209,11 @@ section{
   height: 100vh;
 }
 
-#program-section{
+#program{
   background-color: #F0EAD2;
 }
 
-#faq-section{
+#faq{
   background-color: #F0EAD2;
 }
 
@@ -172,6 +285,26 @@ section{
 }
 
 /*
+ * Tickets
+ */
+
+#offcanvasRight{
+  background-color: #F0E9D2;
+    
+  button{
+      color: #EE767A;
+  }
+  button.active{
+      background-color: #EE767A;
+      color: white;
+  }
+
+  .login-infobox{
+    background-color: #D2D8EE;
+  }
+}
+
+/*
  * FAQ
  */
 
@@ -197,4 +330,24 @@ section{
   .accordion-header{
     border-radius: 0px;
   }
+}
+
+
+/*
+ * Ticketstatus
+ */
+#ticket-info{
+  background-color: #F0EAD2;
+}
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+}
+td {
+  width: 30%;
+  word-wrap: break-word !important;
+}
+td+td {
+  width: auto;
 }
