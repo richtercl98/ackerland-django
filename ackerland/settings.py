@@ -126,8 +126,12 @@ WSGI_APPLICATION = 'ackerland.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'taludb',
+	'USER': 'taludbuser',
+	'PASSWORD': 'taludbuser_password',
+	'HOST': 'localhost',
+	'PORT': '',
     }
 }
 
@@ -171,7 +175,7 @@ TIME_INPUT_FORMATS = [
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = 'staticfiles/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'templates/'),

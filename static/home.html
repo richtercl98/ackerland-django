@@ -1,0 +1,20 @@
+<!-- credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/ -->
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <h3>Hi {{ user.username }}! </h3>
+  <p>Welcome to ackerland</p>
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+  <p>Welcome to ackerland</p>
+  <p>Kindly login or signup</p>
+  <a href="{% url 'login' %}">Login</a> |
+  <a href="{% url 'accounts:signup' %}">Sign Up</a>
+{% endif %}
+
+{% endblock %}

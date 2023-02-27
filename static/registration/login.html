@@ -1,0 +1,16 @@
+<!-- credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/ -->
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+Login - ackerland
+{% endblock %}
+
+{% block content %}
+<h2>Login to ackerland</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
+{% endblock %}
