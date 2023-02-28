@@ -13,17 +13,17 @@ class BaseUserAdmin(UserAdmin):
     add_form = BaseUserCreationForm
     form = BaseUserChangeForm
     model = User
-    list_display = ['vorname', 'nachname', 'email', 'telefonnummer', 'eingeladen_von']
+    list_display = ['vorname', 'nachname', 'bezahlt', 'email', 'telefonnummer', 'eingeladen_von']
     fieldsets = UserAdmin.fieldsets + (
-            (None, {'fields': ('vorname', 'nachname', 'telefonnummer', 'eingeladen_von')}),
+            (None, {'fields': ('vorname', 'nachname', 'bezahlt', 'telefonnummer', 'eingeladen_von')}),
     ) #this will allow to change these fields in admin module
 
 
-class GuestAdmin(admin.ModelAdmin):
-    list_display = ['user', 'bezahlt']
+# class GuestAdmin(admin.ModelAdmin):
+    # list_display = ['user', 'bezahlt']
     # fieldsets = admin.ModelAdmin.fieldsets + ((None, {'fields' : ('user', 'bezahlt')}),)
 admin.site.register(User, BaseUserAdmin)
-admin.site.register(Guest, GuestAdmin)
+admin.site.register(Guest)
 admin.site.register(Orga)
 admin.site.register(Volunteer)
 admin.site.register(Artist)

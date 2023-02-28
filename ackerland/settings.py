@@ -124,17 +124,37 @@ WSGI_APPLICATION = 'ackerland.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'taludb',
-	'USER': 'taludbuser',
-	'PASSWORD': 'taludbuser_password',
-	'HOST': 'localhost',
-	'PORT': '',
+if config('production', cast=bool):
+    # Database settings on hetzner server
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'taludb',
+    	'USER': 'taludbuser',
+    	'PASSWORD': 'taludbuser_password',
+    	'HOST': 'localhost',
+    	'PORT': '',
+        },
     }
-}
 
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'templates/'),
+        os.path.join(BASE_DIR, 'ackerland-frontend/app/'),
+        ]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+else:
+    # Database settings in development
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+        }
+    }
+
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "staticfiles/"),
+    ]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -175,13 +195,7 @@ TIME_INPUT_FORMATS = [
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'templates/'),
-    os.path.join(BASE_DIR, 'ackerland-frontend/app/'),
-    # os.path.join(BASE_DIR, "static/"),
-]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

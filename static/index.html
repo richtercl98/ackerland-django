@@ -5,10 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Clemens Richter, Bjarne Stüpmann">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>Talu festival</title>
+    <title>Talu Festival</title>
     <link rel="stylesheet" href="{% static 'css/themesberg.css' %}">
+    <link rel="stylesheet" href="https://use.typekit.net/uzf0aes.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!--Latest compiled JavaScript-->
@@ -16,27 +18,104 @@
 </head>
 
 <body>
-    <header>
+    <!-- Back to top button -->
+    <a id="back-to-top"></a>
+    <script type="text/javascript">
+        // back to top
+        var btn = $('#back-to-top');
+
+        $(window).scroll(function() {
+          if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+          } else {
+            btn.removeClass('show');
+          }
+        });
+
+        btn.on('click', function(e) {
+          e.preventDefault();
+          $('html, body').animate({scrollTop:0}, '300');
+        });
+    </script>
+
+    <header style="background-color: #D2D8F0;">
         <div id='header-container' class="container-sm d-flex justify-content-between align-items-center h-100 p-2">
           
           <div class="d-flex justify-content-baseline">
-                <img src="{% static 'img/talu_festival-logo_transparent-small.png' %}" alt="talu_festival-logo" width=40 height=40>
-              <div class="mx-1 fs-4 align-items-center">Talu</div>
+                <!--<img src="img/talu_festival-logo_transparent-small.png" alt="talu_festival-logo" width=40 height=40>-->
+                <a id="home-link" class="fs-1 align-items-center" href="" style="color: #EE767A;">Talu</a>
           </div>
-          <div id="user-greeting" class="mx-4 fs-4 align-items-center">
-            {% if user.is_authenticated %}
-                Hallo {{user.username}}!
-            {% endif%}
-          </div>
+            <div class="d-inline-flex justify-content-center">
+              <nav class="nav nav-masthead justify-content-center align-items-center float-md-end d-md-flex">
+                <a class="nav-link fs-4 py-1 px-0" href="#vision">Vision</a>
+                <a class="nav-link fs-4 py-1 px-0" href="#program">Programm</a>
+                <a class="nav-link fs-4 py-1 px-0" href="ticketstatus">Tickets</a>
+                <a class="nav-link fs-4 py-1 px-0" href="#faq">FAQ</a>
+              </nav>
 
+            <nav class="navbar p-0  d-sm-flex d-md-none">
+                <button class="navbar-toggler h-100" type="button" id="OpenMenu">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                  <div class="offcanvas-header d-flex align-items-right">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                  </div>
+                  <div class="offcanvas-body">
+                    <ul class="navbar-nav d-flex justify-content-center align-items-center h-100">
+                      <li class="nav-item" data-bs-dismiss="offcanvas">
+                        <a class="nav-link fs-3 py-1 px-0" href="#vision">Vision</a>
+                      </li>
+                      <li class="nav-item" data-bs-dismiss="offcanvas">
+                        <a class="nav-link fs-3 py-1 px-0" href="#program">Programm</a>
+                      </li>
+                      <li class="nav-item" data-bs-dismiss="offcanvas">
+                        <a class="nav-link fs-3 py-1 px-0" href="#ticket">Tickets</a>
+                      </li>
+                      <li class="nav-item" data-bs-dismiss="offcanvas">
+                        <a class="nav-link fs-3 py-1 px-0" href="#faq">FAQ</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+            </nav>
 
-          <nav class="nav nav-masthead justify-content-center align-items-baseline float-md-end">
-            <a class="nav-link fs-5 py-1 px-0" href="#program-section">Programm</a>
-            <a class="nav-link fs-5 py-1 px-0" href="#ticket-section">Tickets</a>
-            <a class="nav-link fs-5 py-1 px-0" href="#faq-section">FAQ</a>
+            <script type="text/javascript">
 
-          </nav>
+                // workaround: offcanvas navigation not jump back to top after
+                // clicking anchor link
+                document.addEventListener("DOMContentLoaded", function(){
+                  var myOffcanvas = document.getElementById('offcanvasNavbar');
+                  var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
+                  document.getElementById("OpenMenu").addEventListener('click',function (e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    bsOffcanvas.toggle();
+                  });
+                });
+            </script>
+
+        {% if user.is_authenticated %}
+            <div class="dropdown">
+              <button id="user-icon" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{user.name}}</button>
+              <ul class="dropdown-menu">
+                <li>
+                    <div class= "dropdown-item" >
+                        <form method='post'>
+                                {% csrf_token %}
+                                <input type="hidden" id="form_goal" name="form_goal" value="logout">
+                                <button class="dropdown-item" type="submit" >Logout</button>
+                        </form>
+                    </div>
+                </li>
+              </ul>
+            </div>
+        {% else %}
+            <a id="login-button"class="nav-link fs-4 ms-3 p-2 rounded text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Login</a>
+        {% endif %}
+        </div>
       </div>
+
     </header>
 
 

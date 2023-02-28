@@ -14,6 +14,8 @@ class User(AbstractUser):
     telefonnummer = PhoneNumberField(blank=True)
     email = models.EmailField(max_length=256)
 
+    bezahlt = models.BooleanField(default=False)
+
     eingeladen_von = models.ForeignKey('Orga', on_delete=models.SET_NULL, null=True, related_name='eingeladen_von')
 
     def __str__(self):
@@ -21,8 +23,6 @@ class User(AbstractUser):
 
 class Guest(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    bezahlt = models.BooleanField(default=False)
 
     def __str__(self):
         return '{} {}'.format(self.user.vorname, self.user.nachname)
