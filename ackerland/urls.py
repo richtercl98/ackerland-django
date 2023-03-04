@@ -25,7 +25,7 @@ urlpatterns = [
     path('', SignUpView.as_view(template_name='app/index.html'), name='home'),
     path('ticketstatus/',TicketStatusView.as_view(template_name='app/ticketstatus.html'), name='ticketstatus'),
     path('admin/', admin.site.urls),
-    path('timeline/', include(('timeline.urls', 'timeline'))),
+    # path('timeline/', include(('timeline.urls', 'timeline'))),
     path('accounts/', include(('accounts.urls', 'accounts'))),
     path('accounts/', include('django.contrib.auth.urls')),
     path('verification/', include('verify_email.urls')),

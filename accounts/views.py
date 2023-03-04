@@ -11,6 +11,8 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from .forms.userforms import BaseUserCreationForm
+
+from faq.models import Faq
 # credit: https://pypi.org/project/Django-Verify-Email/
 from verify_email.email_handler import send_verification_email
 
@@ -24,9 +26,11 @@ class TicketStatusView(CreateView):
     template_name = 'app/ticketstatus.html'
 
     def get(self, request, *args, **kwargs):
+        context = {
+            'faq_list': Faq.objects.all()
+        }
         if request.user.is_authenticated:
-            print(request.user.is_authenticated)
-            return render(request, self.template_name)
+            return render(request, self.template_name, context)
         else:
             return redirect('home')
 
@@ -36,56 +40,62 @@ class TicketStatusView(CreateView):
             return HttpResponse('Logout successful. <a href="/">Return to Homepage</a>')
 
 class SignUpView(CreateView):
-    form_class = BaseUserCreationForm
+    signup_form = BaseUserCreationForm
     # form_class_signup = BaseUserCreationForm
-    form_class_login = AuthenticationForm
+    login_form = AuthenticationForm
     # success_url = reverse_lazy('login')
     template_name = 'signup.html'
     # success_template_name = 'registration/login.html'
 
     def get(self, request, *args, **kwars):
-        return render(request, self.template_name, {
-            'login_form': self.form_class_login,
-            'register_form': self.form_class,
-            })
+        context = {
+            'login_form': self.login_form,
+            'signup_form': self.signup_form,
+            'faq_list': Faq.objects.all(),
+        }
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
+        context = {
+            'login_form': self.login_form,
+            'signup_form': self.signup_form,
+            'faq_list': Faq.objects.all(),
+        }
+
+        # Handle user logout
         if request.POST['form_goal'] == USER_LOGOUT_GOAL:
             logout(request)
-            return HttpResponse('Logout successful. <a href="/">Return to Homepage</a>')
+            return render(request, self.template_name, context)
+        # Handle user signup
         if request.POST['form_goal'] == USER_SIGNUP_GOAL:
-            form = self.form_class(request.POST)
-            if form.is_valid():
-                inactive_user = send_verification_email(request, form)
+            signup_form = self.signup_form(request.POST)
+            context['signup_form'] = signup_form
+            if signup_form.is_valid():
+                inactive_user = send_verification_email(request, signup_form)
                 return HttpResponse('Verification Link has been sent to email provided. Follow instructions given in email. <a href="/">Return to Homepage</a>')
             else:
-                print('login not valid')
-                return render(request, self.template_name, {
-                    'login_form': form,
-                    'register_form' : form,
-                    'expand_canvas_right': True,
-                    })
+                context['expand_canvas_right'] = USER_SIGNUP_GOAL
+                return render(request, self.template_name, context)
+        # Handle user login
         if request.POST['form_goal'] == USER_LOGIN_GOAL:
-            form = self.form_class_login(data=request.POST)
-            if form.is_valid():
+            login_form = self.login_form(data=request.POST)
+            context['login_form'] = login_form
+            if login_form.is_valid():
                 user = authenticate(
                     request,
-                    username=form.cleaned_data['username'],
-                    password=form.cleaned_data['password'],
+                    username=login_form.cleaned_data['username'],
+                    password=login_form.cleaned_data['password'],
                     )
                 if user is not None:
                     login(request, user)
-                return HttpResponse('Login successful. <a href="/">Return to Homepage</a>')
+                return render(request, self.template_name, context)
             else:
-                print('login not valid')
-                return render(request, self.template_name, {
-                    'login_form': form,
-                    'register_form' : form,
-                    'expand_canvas_right': True,
-                    })
+                # print('login not valid')
+                context['expand_canvas_right'] = USER_LOGIN_GOAL
 
-        return render(request, self.template_name, {
-            'login_form': form,
-            'register_form': form,
-            })
+                return render(request, self.template_name, context)
+
+       # Handle any other request
+
+        return render(request, self.template_name, context)
 

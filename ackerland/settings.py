@@ -60,8 +60,9 @@ INSTALLED_APPS = [
     ''
 
     # My Apps
-    'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
+    #'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
     'accounts',
+    'faq',
 ]
 # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
 AUTH_USER_MODEL = 'accounts.User'
