@@ -35,7 +35,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = False
 
 ALLOWED_HOSTS = [
 'talu-festival.de',
@@ -99,6 +99,9 @@ EMAIL_HOST_USER = config('EMAIL_ID')
 EMAIL_HOST_PASSWORD = config('EMAIL_PW')
 
 DEFAULT_FROM_EMAIL = config('EMAIL_ID')
+
+VERIFICATION_SUCCESS_TEMPLATE = "../static/app/index.html/?verfication=true"
+
 
 PHONENUMBER_DEFAULT_REGION = 'DE'
 

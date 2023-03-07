@@ -10977,6 +10977,10 @@ section {
   background-color: #F0EAD2;
 }
 
+#ticket{
+  background-color: #BAD9BF;
+}
+
 #faq {
   background-color: #F0EAD2;
 }
@@ -11093,3 +11097,8 @@ td {
 td + td {
   width: auto;
 }
+
+.green-btn {
+  background-color: #BAD9BF !important;
+}
+

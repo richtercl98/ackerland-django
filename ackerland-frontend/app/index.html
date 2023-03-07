@@ -8,7 +8,11 @@
     <meta name="author" content="Clemens Richter, Bjarne Stüpmann">
     <meta name="generator" content="Hugo 0.108.0">
     <title>Talu Festival</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'img/talu_festival-logo_transparent-small.png' %}">
+
     <link rel="stylesheet" href="{% static 'css/themesberg.css' %}">
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
     <link rel="stylesheet" href="https://use.typekit.net/uzf0aes.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- jQuery library -->
@@ -46,14 +50,14 @@
                 <a id="home-link" class="fs-1 align-items-center" href="" style="color: #EE767A;">Talu</a>
           </div>
             <div class="d-inline-flex justify-content-center">
-              <nav class="nav nav-masthead justify-content-center align-items-center float-md-end d-md-flex">
-                <a class="nav-link fs-4 py-1 px-0" href="#vision-section">vision</a>
-                <a class="nav-link fs-4 py-1 px-0" href="#program-section">programm</a>
-                <a class="nav-link fs-4 py-1 px-0" href="ticketstatus">tickets</a>
-                <a class="nav-link fs-4 py-1 px-0" href="#faq-section">faq</a>
-              </nav>
+              <nav class="nav nav-masthead justify-content-center align-items-center float-md-end d-none d-md-flex">
+            <a class="nav-link py-1 fs-4 px-0" href="#vision">Vision</a>
+            <a class="nav-link py-1 fs-4 px-0" href="#program">Programm</a>
+            <a class="nav-link py-1 fs-4 px-0" href="#ticket">Tickets</a>
+            <a class="nav-link py-1 fs-4 px-0" href="#faq">FAQ</a>
+          </nav>
 
-            <nav class="navbar p-0  d-sm-flex d-md-none">
+            <nav class="navbar p-0 d-sm-flex d-md-none">
                 <button class="navbar-toggler h-100" type="button" id="OpenMenu">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -64,16 +68,16 @@
                   <div class="offcanvas-body">
                     <ul class="navbar-nav d-flex justify-content-center align-items-center h-100">
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="#vision-section">vision</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="#vision">Vision</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="#program-section">programm</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="#program">Programm</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="#ticket-section">tickets</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="#ticket">Tickets</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="#faq-section">faq</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="#faq">FAQ</a>
                       </li>
                     </ul>
                   </div>
@@ -97,7 +101,7 @@
 
         {% if user.is_authenticated %}
             <div class="dropdown">
-              <button id="user-icon" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{user.name}}</button>
+              <button id="user-icon" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{user.vorname}}</button>
               <ul class="dropdown-menu">
                 <li>
                     <div class= "dropdown-item" >
@@ -127,20 +131,20 @@
 
     <section id="vision">
 
-        <div class="vision container-sm" id="vision-section">
+        <div class="vision container-lg">
         
             <h1 class="section-title mb-4">vision:</h1>
 
-            <div class="vision-container row container-sm">
+            <div class="row">
                 <div class="col-md-6">
                     <div id="lexica-div" class="mb-4 py-3 px-4 rounded" style="background-color: #EFC859;">
                         <p class="mb-0 fs-3 fw-bold">
                             ta&#11825;lu 
                         </p>
-                        <p id="lexicaDescription" class="mb-0 fs-5 fw-lighter fst-italic">
+                        <p id="lexicaDescription" class="mb-0 fs-4 fw-lighter fst-italic">
                             [estnisch: Bauernhof]
                         </p>
-                        <p class="fs-6 mb-0"> 
+                        <p class="fs-5 mb-0"> 
                              kleiner landwirtschaftlicher Betrieb als Gesamtheit von Wohnhaus, Stallungen, Wirtschaftsgelände und Feldern.
                         </p>
                     </div>
@@ -151,7 +155,7 @@
                             liebe freund:innen,
                         </p>
                         <p class="fs-5 mb-0">
-                            mit großer freude laden wir Euch ein, gemeinsam mit uns auf dem Talu zu feiern.
+                            mit großer freude laden wir euch ein gemeinsam mit uns auf dem ackerland zu feiern.
                         </p>
                     </div>
 
@@ -160,7 +164,7 @@
                     
                     <div class="mb-4 py-3 px-4 rounded" style="background-color: #D2D8EE;">
                         <p class="fs-5 mb-0"> 
-                        irgendwo im nirgendwo, bei tag und nacht zwischen house, techno und jedermannsmusik.
+                        irgendwo im nirgendwo bei tag und nacht zwischen house, techno und jedermannsmusik.
 
                         </p>
                     </div>
@@ -177,7 +181,7 @@
 
     <section id="program">
 
-        <div class="program container-sm" id="program-section">
+        <div class="program container-lg">
         
             <h1 class="section-title mb-4">programm:</h1>
 
@@ -198,25 +202,23 @@
                     <div class="tab-pane fade show active" id="music" role="tabpanel" aria-labelledby="music-tab">
 
                         <div class="artists p-2 d-flex">
+                            
+                            <div class="w-100 h-100 d-flex justify-content-center align-items-center text-muted fs-5 my-4 ">coming soon ...</div>
+                            <!--
                             <ul id="artist-list">
-                                <li></li>
-                                <li></li>
-                                <li>coming</li>
-                                <li>soon</li>
-                                <li>...</li>
                             </ul>
+                        -->
                         </div>
 
                     </div>
 
                     <div class="tab-pane fade" id="workshop" role="tabpanel" aria-labelledby="workshop-tab">
+
                         <div class="artists p-2 d-flex">
-                            <ul id="artist-list">
-                                <li></li>
-                                <li></li>
-                                <li>schön neugierig bleiben</li>
+                            
+<!--                             <ul id="artist-list">
                                 <li>:)</li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
 
@@ -338,6 +340,9 @@
             </div>
 
         </div>
+
+
+ 
         
 
     </section>
@@ -396,36 +401,6 @@
         </div>
     </div>
     </section>
-<!--
-<body class="d-flex text-center text-bg-dark">
-
-    <div class="cover-container d-flex w-100 p-3 mx-auto flex-column">
-      
-      <header class="mb-auto">
-        <div class="h-100">
-          <h3 class="float-md-start mb-0">Cover</h3>
-          <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
-            <a class="nav-link fw-bold py-1 px-0" href="#">Features</a>
-            <a class="nav-link fw-bold py-1 px-0" href="#">Contact</a>
-          </nav>
-        </div>
-      </header>
-
-
-      <main class="px-3">
-        <h1>Cover your page.</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-        <p class="lead">
-          <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
-        </p>
-      </main> 
-
-      <footer class="mt-auto text-white-50">
-        <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
-      </footer>
-    </div>
--->
 
     <script>
         function switchToWorkshopView(){
@@ -443,6 +418,118 @@
         }
 
     </script>
+
+       <!-- Modals -->
+        <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel" aria-hidden="true">
+          
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                
+                <h1 class="modal-title fs-5" id="verificationModalLabel">Account erfolgreich aktiviert</h1> 
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              
+              <div class="modal-body">
+                Vielen Dank für deine Accountaktivierung. Du kannst dich nun einloggen und dein Ticketstatus einsehen.
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal" class="btn green-btn">Alles klar</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+          <script type="text/javascript">
+                
+            $(document).ready(function(){
+                
+                var searchParams = new URLSearchParams(window.location.search)
+                if(searchParams.has('verification')){
+                    if(searchParams.get('verification') == "true") {
+                        $('#verificationModal').modal('show');
+                    }
+                }
+            });
+              
+          </script>
+
+
+
+          {% if logout %}
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+          
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                
+                <h1 class="modal-title fs-5" id="logoutModalLabel">Erfolgreich ausgeloggt</h1> 
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              
+              <div class="modal-body">
+                Vielen Dank fürs Vorbeischauen. Bis zum nächsten Mal! 👋
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal" class="btn green-btn">Bis bald!</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+          <script type="text/javascript">
+                
+            $(document).ready(function(){
+                $('#logoutModal').modal('show');
+            });
+              
+          </script>
+          {% endif %}
+
+
+        {% if signup %}
+        <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+          
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                
+                <h1 class="modal-title fs-5" id="signUpModalLabel">Registrierung erfolgreich</h1> 
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              
+              <div class="modal-body">
+                Schön, dass Du dabei bist. Du hast jetzt eine E-Mail mit einem Aktivierungslink für Deinen Account erhalten. Erst nach erfolgreicher Aktivierung kannst Du Dich einloggen.
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal" class="btn green-btn">Alles klar</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+
+          <script type="text/javascript">
+                
+            $(document).ready(function(){
+                $('#signUpModal').modal('show');
+            });
+              
+          </script>
+        {% endif %}
+
 
   </body>
 </html>

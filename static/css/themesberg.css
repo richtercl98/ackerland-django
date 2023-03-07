@@ -11093,3 +11093,8 @@ td {
 td + td {
   width: auto;
 }
+
+.green-btn {
+  background-color: #BAD9BF !important;
+  color: white;
+}

@@ -65,14 +65,19 @@ class SignUpView(CreateView):
         # Handle user logout
         if request.POST['form_goal'] == USER_LOGOUT_GOAL:
             logout(request)
+            context['logout'] = True
             return render(request, self.template_name, context)
+
         # Handle user signup
         if request.POST['form_goal'] == USER_SIGNUP_GOAL:
             signup_form = self.signup_form(request.POST)
             context['signup_form'] = signup_form
+            print('Signup Handling')
             if signup_form.is_valid():
+                print('Signup Valid - E-mail Sent')
                 inactive_user = send_verification_email(request, signup_form)
-                return HttpResponse('Verification Link has been sent to email provided. Follow instructions given in email. <a href="/">Return to Homepage</a>')
+                context['signup'] = True
+                return render(request, self.template_name, context)
             else:
                 context['expand_canvas_right'] = USER_SIGNUP_GOAL
                 return render(request, self.template_name, context)
