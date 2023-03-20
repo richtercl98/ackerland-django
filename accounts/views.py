@@ -10,7 +10,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from .forms.userforms import BaseUserCreationForm
+from .forms.userforms import BaseUserCreationForm, CustomLoginForm
 
 from faq.models import Faq
 # credit: https://pypi.org/project/Django-Verify-Email/
@@ -27,7 +27,7 @@ class TicketStatusView(CreateView):
 
     def get(self, request, *args, **kwargs):
         context = {
-            'faq_list': Faq.objects.all()
+            'faq_list': Faq.objects.order_by('topic')
         }
         if request.user.is_authenticated:
             return render(request, self.template_name, context)
@@ -43,7 +43,7 @@ class TicketStatusView(CreateView):
 class SignUpView(CreateView):
     signup_form = BaseUserCreationForm
     # form_class_signup = BaseUserCreationForm
-    login_form = AuthenticationForm
+    login_form = CustomLoginForm
     # success_url = reverse_lazy('login')
     template_name = 'signup.html'
     # success_template_name = 'registration/login.html'
@@ -52,7 +52,7 @@ class SignUpView(CreateView):
         context = {
             'login_form': self.login_form,
             'signup_form': self.signup_form,
-            'faq_list': Faq.objects.all(),
+            'faq_list': Faq.objects.order_by('topic'),
         }
         return render(request, self.template_name, context)
 

@@ -348,50 +348,18 @@
                 <div class="offcanvas-body">
                     
                 <ul class="nav nav-pills mb-3" id="pills-tab-ticket" role="tablist">
-                    {% if expand_canvas_right == 'signup'%}
                       <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Einloggen</button>
+                        <button class="nav-link {% if expand_canvas_right == 'signup'%} {%elif expand_canvas_right == 'login'%} active {%else%} active {%endif%}" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Einloggen</button>
                       </li>
                       <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Registrieren</button>
+                        <button class="nav-link {% if expand_canvas_right == 'signup'%} active {%elif expand_canvas_right == 'login'%} {%else%} {%endif%}" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Registrieren</button>
                       </li>
-                    {% else %}
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Einloggen</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Registrieren</button>
-                    {% endif %}
                 </ul>
                 
-                <div class="tab-content" id="pills-tabContent">
+                <div class="tab-content userforms-wrapper" id="pills-tabContent">
                   
-                  
-                        {% if expand_canvas_right == 'signup' %}
-                          <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
-
-                            <p class="login-infobox p-3 rounded">
-                                &#x24D8; Wenn du dich bereits für das Festival registriert hast, dann kannst du dich hier anmelden, um mehr über dein Ticketstatus zu erfahren und weitere Informationen zum Festival zu erhalten.
-                            </p>
-
-                            <form method="post">
-                              {% csrf_token %}
-                              {{ login_form.as_p }}
-                              <input type="hidden" id="form_goal" name="form_goal" value="login">
-                              <button class="btn btn-dark text-white" type="submit">Einloggen</button>
-                            </form>
-
-                          </div>
-                          <div class="tab-pane fade show active" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
-                            <form method="post">
-                              {% csrf_token %}
-                              {{ signup_form.as_p }}
-                              <input type="hidden" id="form_goal" name="form_goal" value="signup">
-                              <button class="btn btn-dark text-white" type="submit">Registrieren</button>
-                            </form>
-                          </div>
-                        {% else %}
-                            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+                
+                          <div class="tab-pane fade {% if expand_canvas_right == 'signup' %} {%else%} show active {%endif%}" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab ">
 
                             <p class="login-infobox p-3 rounded">
                                 &#x24D8; Wenn du dich bereits für das Festival registriert hast, dann kannst du dich hier anmelden, um mehr über dein Ticketstatus zu erfahren und weitere Informationen zum Festival zu erhalten.
@@ -404,7 +372,8 @@
                             </form>
 
                           </div>
-                          <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
+
+                          <div class="tab-pane fade {% if expand_canvas_right == 'signup' %} show active {%else%} {%endif%}" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
                             <p class="login-infobox p-3 rounded">
                                 &#x24D8; Wenn du wirkliches Interesse an einem Ticket hast, dann kannst du dich hier für das Festival registrieren.
                             </p>
@@ -415,7 +384,6 @@
                               <button class="btn btn-dark text-white" type="submit">Registrieren</button>
                             </form>
                           </div>
-                        {% endif%}
                 </div>
                 </div>
             </div>
@@ -501,47 +469,25 @@
     </script>
 
        <!-- Modals -->
-        <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel" aria-hidden="true">
-          
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                
-                <h1 class="modal-title fs-5" id="verificationModalLabel">Account erfolgreich aktiviert</h1> 
-                
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              
-              <div class="modal-body">
-                Vielen Dank für deine Accountaktivierung. Du kannst dich nun einloggen und dein Ticketstatus einsehen.
-              </div>
-              
-              <div class="modal-footer">
-                <button type="button" data-bs-dismiss="modal" class="btn green-btn">Alles klar</button>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-
-          <script type="text/javascript">
+         
+         <script type="text/javascript">
                 
             $(document).ready(function(){
                 
                 var searchParams = new URLSearchParams(window.location.search)
                 if(searchParams.has('verification')){
                     if(searchParams.get('verification') == "true") {
-                        $('#verificationModal').modal('show');
+                        $('#offcanvasRight').offcanvas('show');
+                        // delete verfication search param
+                        window.history.pushState({}, document.title, "/");
                     }
                 }
             });
               
           </script>
 
-
-
           {% if logout %}
+            }
         <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
           
           <div class="modal-dialog">

@@ -4,7 +4,8 @@ django.setup()
 
 from django import forms
 
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
+
 
 # from phonenumber_field.formfields import RegionalPhoneNumberField
 
@@ -30,7 +31,12 @@ class BaseUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = User
-        fields = ['username', 'vorname', 'nachname', 'email', 'eingeladen_von']
+        fields = ['username', 'password1', 'password2', 'vorname', 'nachname', 'email', 'eingeladen_von']
+        help_texts = {
+            'username': 'Diesen Benutzernamen musst du dir merken, damit du dich später wieder einloggen kannst, um deine Ticketinformationen abzurufen',
+            'password1': None,
+            'password2': None,
+        }
 
 
 # TODO: better name
@@ -39,3 +45,10 @@ class BaseUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm):
         model = User
         fields = ['vorname', 'nachname']
+
+class CustomLoginForm(AuthenticationForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CustomLoginForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'

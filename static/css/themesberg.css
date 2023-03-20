@@ -11058,6 +11058,35 @@ section {
   background-color: #D2D8EE;
 }
 
+span.helptext{
+  display: inline-block;
+  color: grey;
+  font-size: 0.75em;
+  margin-top: 8px;
+  margin-left: 4px;
+}
+
+.userforms-wrapper ul{
+  color: grey;
+  font-size: 0.75em;
+  margin-top: -24px;
+  padding-left: 16px;
+  margin-left: 8px;
+}
+
+ul.errorlist{
+  font-size: 1em !important;
+  color: red !important;
+  padding-left: 0px;
+  margin-left: 8px;
+  margin-top: 0px !important;
+  list-style-type: none; /* Remove bullets */
+}
+
+.userforms-wrapper label{
+  margin-bottom: 8px;
+}
+
 input {
   border: none !important;
 }
@@ -11127,5 +11156,5 @@ td + td {
 
 .green-btn {
   background-color: #BAD9BF !important;
-  color: white;
+  color: black;
 }

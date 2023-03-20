@@ -100,7 +100,9 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PW')
 
 DEFAULT_FROM_EMAIL = config('EMAIL_ID')
 
-VERIFICATION_SUCCESS_TEMPLATE = "../static/app/index.html/?verfication=true"
+VERIFICATION_SUCCESS_TEMPLATE = "../ackerland-frontend/app/custom_verification_success.html"
+HTML_MESSAGE_TEMPLATE = "../ackerland-frontend/talu_verification_mail/verification_mail.html"
+#VERIFICATION_SUCCESS_TEMPLATE = None
 
 
 PHONENUMBER_DEFAULT_REGION = 'DE'

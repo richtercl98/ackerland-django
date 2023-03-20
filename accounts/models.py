@@ -9,8 +9,8 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
-    vorname = models.CharField(max_length=64, null=True, blank=True)
-    nachname = models.CharField(max_length=64, null=True, blank=True)
+    vorname = models.CharField(max_length=64)
+    nachname = models.CharField(max_length=64)
     email = models.EmailField(max_length=256)
 
     bezahlt = models.BooleanField(default=False)
