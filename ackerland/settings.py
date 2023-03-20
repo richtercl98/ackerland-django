@@ -20,7 +20,7 @@ from django.core.mail import send_mail
 
 SECRET_KEY = config('SECRET_KEY')
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'ticketstatus'
 LOGOUT_REDIRECT_URL = 'home'
 
 
@@ -130,6 +130,7 @@ WSGI_APPLICATION = 'ackerland.wsgi.application'
 
 if config('production', cast=bool):
     # Database settings on hetzner server
+    print('production')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -147,6 +148,7 @@ if config('production', cast=bool):
         ]
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 else:
+    print('DEVELOPMENT')
     # Database settings in development
     DATABASES = {
     'default': {
@@ -156,7 +158,7 @@ else:
     }
 
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "staticfiles/"),
+        os.path.join(BASE_DIR, 'ackerland-frontend/app/'),
     ]
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 

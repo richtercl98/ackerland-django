@@ -3,8 +3,11 @@ import django
 django.setup()
 
 from django import forms
+
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+
 # from phonenumber_field.formfields import RegionalPhoneNumberField
+
 from ..models import User
 
 from django.core.exceptions import ValidationError
@@ -22,12 +25,12 @@ class BaseUserCreationForm(UserCreationForm):
         email = self.cleaned_data['email'].lower()
         users_with_same_email = User.objects.filter(email=email)
         if users_with_same_email.count():
-            raise ValidationError('E-Mail "%(email)s" already taken.', code='email-taken', params={'email' : email})
+            raise ValidationError('E-Mail "%(email)s" wird bereits verwendet.', code='email-taken', params={'email' : email})
         return email
 
     class Meta(UserCreationForm):
         model = User
-        fields = ['username', 'vorname', 'nachname', 'email', 'eingeladen_von', 'telefonnummer']
+        fields = ['username', 'vorname', 'nachname', 'email', 'eingeladen_von']
 
 
 # TODO: better name

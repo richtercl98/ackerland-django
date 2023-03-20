@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
@@ -43,7 +43,7 @@
           
           <div class="d-flex justify-content-baseline">
                 <!--<img src="img/talu_festival-logo_transparent-small.png" alt="talu_festival-logo" width=40 height=40>-->
-                <a id="home-link" class="fs-1 align-items-center" href="" style="color: #EE767A;">Talu</a>
+                <a id="home-link" class="fs-1 align-items-center" href="/" style="color: #EE767A;">Talu</a>
           </div>
             <div class="d-inline-flex justify-content-center">
               <nav class="nav nav-masthead justify-content-center align-items-center float-md-end d-none d-md-flex">
@@ -104,7 +104,7 @@
                         <form method='post'>
                                 {% csrf_token %}
                                 <input type="hidden" id="form_goal" name="form_goal" value="logout">
-                                <button class="dropdown-item" type="submit" >logout</button>
+                                <button class="dropdown-item p-0" type="submit" >logout</button>
                         </form>
                     </div>
                 </li>

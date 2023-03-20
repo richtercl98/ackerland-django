@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta name="description" content="">
     <meta name="author" content="Clemens Richter, Bjarne Stüpmann">
     <meta name="generator" content="Hugo 0.108.0">
@@ -14,14 +14,14 @@
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
     <link rel="stylesheet" href="https://use.typekit.net/uzf0aes.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!--Latest compiled JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="background-color: #F0EAD2;">
     <!-- Back to top button -->
     <a id="back-to-top"></a>
     <script type="text/javascript">
@@ -103,12 +103,15 @@
             <div class="dropdown">
               <button id="user-icon" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{user.vorname}}</button>
               <ul class="dropdown-menu">
+                <li class="dropdown-item">
+                    <a class="nav-link" href="/ticketstatus">Ticketstatus</a>
+                </li>
                 <li>
                     <div class= "dropdown-item" >
                         <form method='post'>
                                 {% csrf_token %}
                                 <input type="hidden" id="form_goal" name="form_goal" value="logout">
-                                <button class="dropdown-item" type="submit" >logout</button>
+                                <button class="dropdown-item p-0" type="submit" >logout</button>
                         </form>
                     </div>
                 </li>
@@ -135,75 +138,97 @@
         
             <h1 class="section-title mb-4">vision:</h1>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="lexica-div" class="mb-4 py-3 px-4 rounded" style="background-color: #EFC859;">
-                        <p class="mb-0 fs-3 fw-bold">
-                            ta&#11825;lu 
-                        </p>
-                        <p id="lexicaDescription" class="mb-0 fs-4 fw-lighter fst-italic">
-                            [estnisch: Bauernhof]
-                        </p>
-                        <p class="fs-5 mb-0"> 
-                             kleiner landwirtschaftlicher Betrieb als Gesamtheit von Wohnhaus, Stallungen, Wirtschaftsgelände und Feldern.
-                        </p>
-                    </div>
-
-                    <div class="mb-4 py-3 px-4 rounded" style="background-color: #D2D8EE;">
-                        
-                        <p class="fs-4 fw-bold mb-1"> 
-                            liebe freund:innen,
-                        </p>
-                        <p class="fs-5 mb-0">
-                            mit großer freude laden wir euch ein gemeinsam mit uns auf dem ackerland zu feiern.
-                        </p>
-                    </div>
-
-                </div>
-                <div class="col-md-6">
-                    
-                    <div class="mb-4 py-3 px-4 rounded" style="background-color: #D2D8EE;">
-                        <p class="fs-5 mb-0"> 
-                        irgendwo im nirgendwo bei tag und nacht zwischen house, techno und jedermannsmusik.
-
-                        </p>
-                    </div>
-                    <div class="mb-4 py-3 px-4 rounded" style="background-color: #D2D8EE;">
-                        <p class="fs-5 mb-0"> 
-                             außerdem ist für ein buntes programm von workshops und verschiedenen anderen aktivitäten gesorgt.
-                        </p>
-                    </div>
+            <div id="lexica-div" class="mb-3 p-4 rounded" style="background-color: #EFC859;">
+                <p class="mb-0 fs-3 fw-bold">
+                    ta&#11825;lu 
+                </p>
+                <p id="lexicaDescription" class="mb-0 fs-5 fw-lighter fst-italic">
+                    [estnisch: Bauernhof]
+                </p>
+                <p class="fs-6 mb-0"> 
+                     kleiner landwirtschaftlicher Betrieb als Gesamtheit von Wohnhaus, Stallungen, Wirtschaftsgelände und Feldern.
+                </p>
             </div>
 
+            <div class="row g-4 mb-3">
+                <div class="col-md-4">
+                    <div class="div w-100 h-100 d-flex flex-column align-items-center rounded p-4" style="background-color: #D2D8EE;">
+                        
+                        <i class="fa-solid fa-users fs-1 rounded-circle d-flex justify-content-center align-items-center my-2" style="color:white;background-color: #EE767A; width: 85px; height: 85px"></i>
+
+                        <h4 class="my-2 fw-bold">Gemeinschaftlich</h4>
+
+                        <p class=" my-2">Das Talu ist dafür da, dass wir alle unsere Liebsten einladen, um zusammen eine gute Zeit zu erleben und gemeinsame Erinnerungen zu schaffen. Es sollen alte Freundschaften gestärkt und neue Freundschaften geschlossen werden.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="div w-100 h-100 d-flex flex-column align-items-center rounded p-4" style="background-color: #D2D8EE;">
+                        
+                        <i class="fa-solid fa-music fs-1 rounded-circle d-flex justify-content-center align-items-center my-2 pe-1" style="color:white;background-color: #EE767A; width: 85px; height: 85px"></i>
+
+                        <h4 class="my-2 fw-bold">Musikalisch</h4>
+
+                        <p class=" my-2">Wir wollen das Wochenende mit einer buten Auswahl von elektronischer Musik gestalten. Egal ob Liebhaber*innen von House, Techno oder Jedermannsmusik: uns ist es wichtig, dass jeder auf seine Kosten kommt. Und vielleicht kann der eine oder andere ja mal über seinen musikalischen Tellerrand hinausschauen.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="div w-100 h-100 d-flex flex-column align-items-center rounded p-4" style="background-color: #D2D8EE;">
+                        
+                        <i class="fa-solid fa-handshake fs-1 rounded-circle d-flex justify-content-center align-items-center my-2" style="color:white;background-color: #EE767A; width: 85px; height: 85px"></i>
+
+                        <h4 class="my-2 fw-bold">Kollaborativ</h4>
+
+                        <p class=" my-2">Unsere Idee ist, dass so ein Wochenende nur so richtig gut wird, wenn es von allen mitgestaltet wird. Also, bist du Musiker*in/DJ, hast eine Idee für einen coolen Workshop, möchtest eine Barschicht übernehmen oder willst einfach ein paar Witze erzählen? Dann schreib uns gerne an.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
+    <section id ="program">
 
-    <section id="program">
-
-        <div class="program container-lg">
+        <div class="program container-sm mb-5">
         
             <h1 class="section-title mb-4">programm:</h1>
 
-            <div id="program-wrapper" class="music-style mx-3 rounded">
+            <div id="program-wrapper" class="music-style mx-3 rounded px-5 py-3">
 
-                <ul class="nav nav-pills justify-content-center" id="myTab" role="tablist">
+                <ul class="nav nav-pills justify-content-center mb-3" id="myTab" role="tablist">
                   
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="music-tab" data-bs-toggle="pill" data-bs-target="#music" type="button" role="tab" aria-controls="music" aria-selected="true" onclick="switchToMusicView()">musik</button>
+                    <button class="nav-link active fs-4" id="music-tab" data-bs-toggle="pill" data-bs-target="#music" type="button" role="tab" aria-controls="music" aria-selected="true" onclick="switchToMusicView()">Musik</button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="workshop-tab" data-bs-toggle="pill" data-bs-target="#workshop" type="button" role="tab" aria-controls="workshop" aria-selected="false" onclick="switchToWorkshopView()">workshops</button>
+                    <button class="nav-link fs-4" id="workshop-tab" data-bs-toggle="pill" data-bs-target="#workshop" type="button" role="tab" aria-controls="workshop" aria-selected="false" onclick="switchToWorkshopView()">Workshops</button>
                   </li>
 
                 </ul>
 
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="music" role="tabpanel" aria-labelledby="music-tab">
+                <script>
+                    // toggle background color program section
+                    // depending on selection
+                    function switchToWorkshopView(){
+                        var classes = document.getElementById("program-wrapper").classList;
+                        if(classes.contains("music-style")){
+                            classes.remove("music-style");
+                        }
+                    }
+
+                    function switchToMusicView(){
+                        var classes = document.getElementById("program-wrapper").classList;
+                        if(!(classes.contains("music-style"))){
+                            classes.add("music-style");
+                        }
+                    }
+                </script>
+
+                <div class="tab-content fs-5" id="myTabContent">
+
+                     <div class="tab-pane fade show active" id="music" role="tabpanel" aria-labelledby="music-tab">
 
                         <div class="artists p-2 d-flex">
                             
-                            <div class="w-100 h-100 d-flex justify-content-center align-items-center text-muted fs-5 my-4 ">coming soon ...</div>
+                            <p class="w-100 h-100 d-flex justify-content-center align-items-center text-muted fs-5">tba</p>
                             <!--
                             <ul id="artist-list">
                             </ul>
@@ -215,13 +240,15 @@
                     <div class="tab-pane fade" id="workshop" role="tabpanel" aria-labelledby="workshop-tab">
 
                         <div class="artists p-2 d-flex">
+
+                            <p class="w-100 h-100 d-flex justify-content-center align-items-center text-white-50 fs-5">tba</p>
                             
 <!--                             <ul id="artist-list">
                                 <li>:)</li>
                             </ul> -->
                         </div>
+                        
                     </div>
-
                 </div>            
         </div>
 
@@ -230,98 +257,128 @@
     
     </section>
 
-    <section id="ticket">
+    <section id="ticket" class="rounded-5 mx-3">
 
         <div class="container-sm" id="ticket-section">
             
             <h1 class="section-title">tickets:</h1>
 
-            <a>
-                <h3 class="text-decoration-underline" align="center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="color: blue;"> >>> hier entlang <<< </h3>
-            </a>
+             <h4 class="text-center mb-3 p-3 rounded" style="background-color:#F0EAD2;">Wie bekomme ich mein Ticket?</h4>
+
+            <div class="row g-4 my-3">
+                <div class="col-md-6 my-3">
+                    <div class="row w-100 h-100 rounded p-3 m-0" style="background-color: #F0EAD2; ">
+                        
+                        <div class="col-3 my-3 d-flex justify-content-center align-items-center">
+                            <div class="rounded-circle p-2 d-flex justify-content-center align-items-center" style="min-width: 75px; min-height: 75px; background-color: #D2D8F0;"> 
+                                <h2 class="text-black-50 mb-0">1</h2> 
+                            </div>
+                        </div>
+                        
+                        <div class="col-9 text-center d-flex-row justify-content-center align-items-center">
+                            <h4 class="fw-bold my-3">Registrieren</h4>
+                            <p class="card-text m-3 pt-0">Wenn du ein Ticket kaufen willst, dann musst du dir in der {%if user.is_authenticated %}Ticketübersicht{% else %} <a type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="color: #EE767A; text-decoration: underline;">Ticketübersicht</a> {% endif %} unter dem Punkt <span class="text-black-50" style="font-style: italic;"> Registrieren</span> einen Account erstellen.</p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-md-6 my-3">
+                        <div class="row w-100 h-100 rounded p-3 m-0" style="background-color: #F0EAD2; ">
+                            
+                            <div class="col-9 text-center">
+                                <h4 class="fw-bold my-3">Aktivieren</h4>
+                                <p class="card-text m-3 pt-0">Anschließend bekommst du von uns eine Mail mit einem Aktivierungslink. Klicke auf diesen Link, um deinen Account zu aktivieren.</p>
+                            </div>
+
+                            <div class="col-3 my-3 d-flex justify-content-center align-items-center">
+                                <div class="rounded-circle p-2 d-flex justify-content-center align-items-center" style="min-width: 75px; min-height: 75px; background-color: #D2D8F0;"> 
+                                    <h2 class="text-black-50 mb-0">2</h2> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row g-4 d-flex justify-content-center">
+                    <div class="col-md-6 my-3">
+                        <div class="row w-100 h-100 rounded p-3 m-0" style="background-color: #F0EAD2;">
+                            
+                            <div class="col-3 my-3 d-flex justify-content-center align-items-center">
+                                <div class="rounded-circle p-2 d-flex justify-content-center align-items-center" style="min-width: 75px; min-height: 75px; background-color: #D2D8F0;"> 
+                                    <h2 class="text-black-50 mb-0">3</h2> 
+                                </div>
+                            </div>
+                            
+                            <div class="col-9 text-center">
+                                <h4 class="fw-bold my-3">Einloggen</h4>
+                                <p class="card-text m-3 pt-0">Wenn dein Account aktiviert ist, kannst du dich mit deinen Anmeldedaten einloggen. Wenn du erfolgreich eingeloggt bist, kannst du auf deinen {%if user.is_authenticated%}<a href="/ticketstatus" style="color: #EE767A;">Ticketstatus</a> {%else%}Ticketstatus{%endif%}zugreifen.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-3">
+                        <div class="row w-100 h-100 rounded p-3 m-0" style="background-color: #F0EAD2; ">
+                            
+                            <div class="col-9 d-flex-row text-center justify-content-center align-items-center">
+                                <h4 class="fw-bold my-3 justify-content-center">Überweisen</h4>
+                                <p class="card-text m-3 pt-0 justify-content-center">Als letzten Schritt musst du uns nur noch das Geld überweisen. <b>Das Ticket kostet 22€.</b> Die Überweisungsdetails findest du in deinem Ticketstatus.</p>
+                            </div>
+
+                            <div class="col-3 my-3 d-flex justify-content-center align-items-center">
+                                <div class="rounded-circle p-2 d-flex justify-content-center align-items-center" style="min-width: 75px; min-height: 75px; background-color: #D2D8F0;"> 
+                                    <h2 class="text-black-50 mb-0">4</h2> 
+                                </div>
+                            </div>
+
+                        </div>  
+                    </div>
+                </div>
+            </div>
+
+
             {% if expand_canvas_right %}
                 <div class="offcanvas offcanvas-end show" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             {% else %}
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             {% endif %}
                 <div class="offcanvas-header">
-                    <h5 id="offcanvasRightLabel">ticketübersicht</h5>
+                    <h5 id="offcanvasRightLabel">Ticketübersicht</h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 
                 <div class="offcanvas-body">
                     
                 <ul class="nav nav-pills mb-3" id="pills-tab-ticket" role="tablist">
-                  {% if user.is_authenticated %}
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-status-tab" data-bs-toggle="pill" data-bs-target="#pills-status" type="button" role="tab" aria-controls="pills-status" aria-selected="true">ticketstatus</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-logout-tab" data-bs-toggle="pill" data-bs-target="#pills-logout" type="button" role="tab" aria-controls="pills-logout" aria-selected="false">account</button>
-                    </li>
-                  {% else %}
-                    {% if expand_canvas_right == 'login'%}
+                    {% if expand_canvas_right == 'signup'%}
                       <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">einloggen</button>
+                        <button class="nav-link" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Einloggen</button>
                       </li>
                       <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">anmelden</button>
+                        <button class="nav-link active" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Registrieren</button>
                       </li>
                     {% else %}
                       <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">einloggen</button>
+                        <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Einloggen</button>
                       </li>
                       <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">anmelden</button>
+                        <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Registrieren</button>
                     {% endif %}
-                  {% endif %}
                 </ul>
                 
                 <div class="tab-content" id="pills-tabContent">
                   
-                  {% if user.is_authenticated %}
-                  <div class="tab-pane fade show active" id="pills-status" role="tabpanel" aria-labelledby="pills-status-tab">
-                    <p>Ticket: 20€</p>
-                    <p>Kontoinhaber: Clemens Richter</p>
-                    <p>IBAN: DE79 1309 1054 0008 2070 11</p>
-                    <p>Betreff: Talu, {{user.vorname}}, {{user.nachname}}</p>
-                    <p>Bezahlstatus: In Bearbeitung...</p>
-                </div>
-                <div class="tab-pane fade" id="pills-logout" role="tabpanel" aria-labelledby="pills-logout-tab">
-                    <form method="post">
-                    {% csrf_token %}
-                      <input type="hidden" id="form_goal" name="form_goal" value="logout">
-                      <button class="btn btn-dark" type="submit">logout</button>
-                    </form>
-                  </div>
-                    {% else %}
-                        {% if expand_canvas_right == 'login' %}
-                          <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+                  
+                        {% if expand_canvas_right == 'signup' %}
+                          <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+
+                            <p class="login-infobox p-3 rounded">
+                                &#x24D8; Wenn du dich bereits für das Festival registriert hast, dann kannst du dich hier anmelden, um mehr über dein Ticketstatus zu erfahren und weitere Informationen zum Festival zu erhalten.
+                            </p>
 
                             <form method="post">
                               {% csrf_token %}
                               {{ login_form.as_p }}
                               <input type="hidden" id="form_goal" name="form_goal" value="login">
-                              <button class="btn btn-dark" type="submit">einloggen</button>
-                            </form>
-
-                          </div>
-                          <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
-                            <form method="post">
-                              {% csrf_token %}
-                              {{ signup_form.as_p }}
-                              <input type="hidden" id="form_goal" name="form_goal" value="signup">
-                              <button class="btn btn-dark" type="submit">anmelden</button>
-                            </form>
-                          </div>
-                        {% else %}
-                            <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
-
-                            <form method="post">
-                              {% csrf_token %}
-                              {{ login_form.as_p }}
-                              <input type="hidden" id="form_goal" name="form_goal" value="login">
-                              <button class="btn btn-dark" type="submit">einloggen</button>
+                              <button class="btn btn-dark text-white" type="submit">Einloggen</button>
                             </form>
 
                           </div>
@@ -330,11 +387,35 @@
                               {% csrf_token %}
                               {{ signup_form.as_p }}
                               <input type="hidden" id="form_goal" name="form_goal" value="signup">
-                              <button class="btn btn-dark" type="submit">anmelden</button>
+                              <button class="btn btn-dark text-white" type="submit">Registrieren</button>
+                            </form>
+                          </div>
+                        {% else %}
+                            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+
+                            <p class="login-infobox p-3 rounded">
+                                &#x24D8; Wenn du dich bereits für das Festival registriert hast, dann kannst du dich hier anmelden, um mehr über dein Ticketstatus zu erfahren und weitere Informationen zum Festival zu erhalten.
+                            </p>
+                            <form method="post">
+                              {% csrf_token %}
+                              {{ login_form.as_p }}
+                              <input type="hidden" id="form_goal" name="form_goal" value="login">
+                              <button class="btn btn-dark text-white" type="submit">Einloggen</button>
+                            </form>
+
+                          </div>
+                          <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
+                            <p class="login-infobox p-3 rounded">
+                                &#x24D8; Wenn du wirkliches Interesse an einem Ticket hast, dann kannst du dich hier für das Festival registrieren.
+                            </p>
+                            <form method="post">
+                              {% csrf_token %}
+                              {{ signup_form.as_p }}
+                              <input type="hidden" id="form_goal" name="form_goal" value="signup">
+                              <button class="btn btn-dark text-white" type="submit">Registrieren</button>
                             </form>
                           </div>
                         {% endif%}
-                    {% endif %}
                 </div>
                 </div>
             </div>

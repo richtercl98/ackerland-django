@@ -10965,8 +10965,7 @@ body {
  * Sections
  */
 section {
-  padding: 20px;
-  min-height: 100vh;
+  padding: 40px;
 }
 
 #hero {

@@ -37,7 +37,8 @@ class TicketStatusView(CreateView):
     def post(self, request, *args, **kwargs):
         if request.POST['form_goal'] == USER_LOGOUT_GOAL:
             logout(request)
-            return HttpResponse('Logout successful. <a href="/">Return to Homepage</a>')
+
+            return redirect('home')
 
 class SignUpView(CreateView):
     signup_form = BaseUserCreationForm
@@ -64,8 +65,9 @@ class SignUpView(CreateView):
 
         # Handle user logout
         if request.POST['form_goal'] == USER_LOGOUT_GOAL:
-            logout(request)
-            context['logout'] = True
+            if request.user.is_authenticated:
+                context['logout'] = True
+                logout(request)
             return render(request, self.template_name, context)
 
         # Handle user signup
@@ -81,6 +83,7 @@ class SignUpView(CreateView):
             else:
                 context['expand_canvas_right'] = USER_SIGNUP_GOAL
                 return render(request, self.template_name, context)
+        
         # Handle user login
         if request.POST['form_goal'] == USER_LOGIN_GOAL:
             login_form = self.login_form(data=request.POST)
@@ -93,7 +96,8 @@ class SignUpView(CreateView):
                     )
                 if user is not None:
                     login(request, user)
-                return render(request, self.template_name, context)
+                #return render(request, self.template_name, context)
+                return redirect('ticketstatus')
             else:
                 # print('login not valid')
                 context['expand_canvas_right'] = USER_LOGIN_GOAL
