@@ -111,14 +111,14 @@
                         <form method='post'>
                                 {% csrf_token %}
                                 <input type="hidden" id="form_goal" name="form_goal" value="logout">
-                                <button class="dropdown-item p-0" type="submit" >logout</button>
+                                <button class="dropdown-item p-0" type="submit" >Logout</button>
                         </form>
                     </div>
                 </li>
               </ul>
             </div>
         {% else %}
-            <a id="login-button"class="nav-link fs-4 ms-3 p-2 rounded text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">login</a>
+            <a id="login-button"class="nav-link fs-4 ms-3 p-2 rounded text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Login</a>
         {% endif %}
         </div>
       </div>
@@ -178,7 +178,7 @@
 
                         <h4 class="my-2 fw-bold">Kollaborativ</h4>
 
-                        <p class=" my-2">Unsere Idee ist, dass so ein Wochenende nur so richtig gut wird, wenn es von allen mitgestaltet wird. Also, bist du Musiker*in/DJ, hast eine Idee für einen coolen Workshop, möchtest eine Barschicht übernehmen oder willst einfach ein paar Witze erzählen? Dann schreib uns gerne an.</p>
+                        <p class=" my-2">Unsere Idee ist, dass so ein Wochenende nur so richtig gut wird, wenn es von allen mitgestaltet wird. Also, bist Du Musiker*in/DJ, hast eine Idee für einen coolen Workshop, möchtest eine Barschicht übernehmen oder willst einfach ein paar Witze erzählen? Dann schreib uns gerne an.</p>
                     </div>
                 </div>
             </div>
@@ -277,7 +277,7 @@
                         
                         <div class="col-9 text-center d-flex-row justify-content-center align-items-center">
                             <h4 class="fw-bold my-3">Registrieren</h4>
-                            <p class="card-text m-3 pt-0">Wenn du ein Ticket kaufen willst, dann musst du dir in der {%if user.is_authenticated %}Ticketübersicht{% else %} <a type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="color: #EE767A; text-decoration: underline;">Ticketübersicht</a> {% endif %} unter dem Punkt <span class="text-black-50" style="font-style: italic;"> Registrieren</span> einen Account erstellen.</p>
+                            <p class="card-text m-3 pt-0">Wenn Du ein Ticket kaufen willst, dann musst Du Dir in der {%if user.is_authenticated %}Ticketübersicht{% else %} <a type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="color: #EE767A; text-decoration: underline;">Ticketübersicht</a> {% endif %} unter dem Punkt <span class="text-black-50" style="font-style: italic;"> Registrieren</span> einen Account erstellen.</p>
                         </div>
                     </div>
                 </div>
@@ -286,7 +286,7 @@
                             
                             <div class="col-9 text-center">
                                 <h4 class="fw-bold my-3">Aktivieren</h4>
-                                <p class="card-text m-3 pt-0">Anschließend bekommst du von uns eine Mail mit einem Aktivierungslink. Klicke auf diesen Link, um deinen Account zu aktivieren.</p>
+                                <p class="card-text m-3 pt-0">Anschließend bekommst Du von uns eine E-Mail mit einem Aktivierungslink. Klicke auf diesen Link, um Deinen Account zu aktivieren.</p>
                             </div>
 
                             <div class="col-3 my-3 d-flex justify-content-center align-items-center">
@@ -310,7 +310,7 @@
                             
                             <div class="col-9 text-center">
                                 <h4 class="fw-bold my-3">Einloggen</h4>
-                                <p class="card-text m-3 pt-0">Wenn dein Account aktiviert ist, kannst du dich mit deinen Anmeldedaten einloggen. Wenn du erfolgreich eingeloggt bist, kannst du auf deinen {%if user.is_authenticated%}<a href="/ticketstatus" style="color: #EE767A;">Ticketstatus</a> {%else%}Ticketstatus{%endif%}zugreifen.</p>
+                                <p class="card-text m-3 pt-0">Wenn Dein Account aktiviert ist, kannst Du Dich mit Deinen Anmeldedaten einloggen. Wenn Du erfolgreich eingeloggt bist, kannst Du auf deinen {%if user.is_authenticated%}<a href="/ticketstatus" style="color: #EE767A;">Ticketstatus</a> {%else%}Ticketstatus{%endif%}zugreifen.</p>
                             </div>
 
                         </div>
@@ -320,7 +320,7 @@
                             
                             <div class="col-9 d-flex-row text-center justify-content-center align-items-center">
                                 <h4 class="fw-bold my-3 justify-content-center">Überweisen</h4>
-                                <p class="card-text m-3 pt-0 justify-content-center">Als letzten Schritt musst du uns nur noch das Geld überweisen. <b>Das Ticket kostet 22€.</b> Die Überweisungsdetails findest du in deinem Ticketstatus.</p>
+                                <p class="card-text m-3 pt-0 justify-content-center">Als letzten Schritt musst Du uns nur noch das Geld überweisen. <b>Das Ticket kostet 22€.</b> Die Überweisungsdetails findest Du in Deinem Ticketstatus.</p>
                             </div>
 
                             <div class="col-3 my-3 d-flex justify-content-center align-items-center">
@@ -362,7 +362,7 @@
                           <div class="tab-pane fade {% if expand_canvas_right == 'signup' %} {%else%} show active {%endif%}" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab ">
 
                             <p class="login-infobox p-3 rounded">
-                                &#x24D8; Wenn du dich bereits für das Festival registriert hast, dann kannst du dich hier anmelden, um mehr über dein Ticketstatus zu erfahren und weitere Informationen zum Festival zu erhalten.
+                                &#x24D8; Wenn Du Dich bereits für das Festival registriert hast, dann kannst Du Dich hier anmelden, um mehr über Dein Ticketstatus zu erfahren und weitere Informationen zum Festival zu erhalten.
                             </p>
                             <form method="post">
                               {% csrf_token %}
@@ -375,7 +375,7 @@
 
                           <div class="tab-pane fade {% if expand_canvas_right == 'signup' %} show active {%else%} {%endif%}" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
                             <p class="login-infobox p-3 rounded">
-                                &#x24D8; Wenn du wirkliches Interesse an einem Ticket hast, dann kannst du dich hier für das Festival registrieren.
+                                &#x24D8; Wenn Du wirkliches Interesse an einem Ticket hast, dann kannst Du Dich hier für das Festival registrieren.
                             </p>
                             <form method="post">
                               {% csrf_token %}

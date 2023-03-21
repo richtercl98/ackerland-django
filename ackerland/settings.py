@@ -154,7 +154,7 @@ if config('production', cast=bool):
     ]
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 else:
-    print('DEVELOPMENT')
+    # print('DEVELOPMENT')
     # Database settings in development
     DATABASES = {
     'default': {
