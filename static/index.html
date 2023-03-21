@@ -47,10 +47,10 @@
           </div>
             <div class="d-inline-flex justify-content-center">
               <nav class="nav nav-masthead justify-content-center align-items-center float-md-end d-md-flex">
-                <a class="nav-link fs-4 py-1 px-0" href="#vision">Vision</a>
-                <a class="nav-link fs-4 py-1 px-0" href="#program">Programm</a>
-                <a class="nav-link fs-4 py-1 px-0" href="ticketstatus">Tickets</a>
-                <a class="nav-link fs-4 py-1 px-0" href="#faq">FAQ</a>
+                <a class="nav-link fs-4 py-1 px-0" href="#vision-section">vision</a>
+                <a class="nav-link fs-4 py-1 px-0" href="#program-section">programm</a>
+                <a class="nav-link fs-4 py-1 px-0" href="ticketstatus">tickets</a>
+                <a class="nav-link fs-4 py-1 px-0" href="#faq-section">faq</a>
               </nav>
 
             <nav class="navbar p-0  d-sm-flex d-md-none">
@@ -64,16 +64,16 @@
                   <div class="offcanvas-body">
                     <ul class="navbar-nav d-flex justify-content-center align-items-center h-100">
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="#vision">Vision</a>
+                        <a class="nav-link fs-3 py-1 px-0" href="#vision-section">vision</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="#program">Programm</a>
+                        <a class="nav-link fs-3 py-1 px-0" href="#program-section">programm</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="#ticket">Tickets</a>
+                        <a class="nav-link fs-3 py-1 px-0" href="#ticket-section">tickets</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="#faq">FAQ</a>
+                        <a class="nav-link fs-3 py-1 px-0" href="#faq-section">faq</a>
                       </li>
                     </ul>
                   </div>
@@ -104,14 +104,14 @@
                         <form method='post'>
                                 {% csrf_token %}
                                 <input type="hidden" id="form_goal" name="form_goal" value="logout">
-                                <button class="dropdown-item" type="submit" >Logout</button>
+                                <button class="dropdown-item" type="submit" >logout</button>
                         </form>
                     </div>
                 </li>
               </ul>
             </div>
         {% else %}
-            <a id="login-button"class="nav-link fs-4 ms-3 p-2 rounded text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Login</a>
+            <a id="login-button"class="nav-link fs-4 ms-3 p-2 rounded text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">login</a>
         {% endif %}
         </div>
       </div>
@@ -127,7 +127,7 @@
 
     <section id="vision">
 
-        <div class="vision container-sm">
+        <div class="vision container-sm" id="vision-section">
         
             <h1 class="section-title mb-4">vision:</h1>
 
@@ -151,7 +151,7 @@
                             liebe freund:innen,
                         </p>
                         <p class="fs-5 mb-0">
-                            mit großer freude laden wir euch ein gemeinsam mit uns auf dem Talu zu feiern.
+                            mit großer freude laden wir Euch ein, gemeinsam mit uns auf dem Talu zu feiern.
                         </p>
                     </div>
 
@@ -160,7 +160,7 @@
                     
                     <div class="mb-4 py-3 px-4 rounded" style="background-color: #D2D8EE;">
                         <p class="fs-5 mb-0"> 
-                        irgendwo im nirgendwo bei tag und nacht zwischen house, techno und jedermannsmusik.
+                        irgendwo im nirgendwo, bei tag und nacht zwischen house, techno und jedermannsmusik.
 
                         </p>
                     </div>
@@ -175,9 +175,9 @@
     </section>
 
 
-    <section id ="program-section">
+    <section id="program">
 
-        <div class="program container-sm">
+        <div class="program container-sm" id="program-section">
         
             <h1 class="section-title mb-4">programm:</h1>
 
@@ -186,10 +186,10 @@
                 <ul class="nav nav-pills justify-content-center" id="myTab" role="tablist">
                   
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="music-tab" data-bs-toggle="pill" data-bs-target="#music" type="button" role="tab" aria-controls="music" aria-selected="true" onclick="switchToMusicView()">Musik</button>
+                    <button class="nav-link active" id="music-tab" data-bs-toggle="pill" data-bs-target="#music" type="button" role="tab" aria-controls="music" aria-selected="true" onclick="switchToMusicView()">musik</button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="workshop-tab" data-bs-toggle="pill" data-bs-target="#workshop" type="button" role="tab" aria-controls="workshop" aria-selected="false" onclick="switchToWorkshopView()">Workshops</button>
+                    <button class="nav-link" id="workshop-tab" data-bs-toggle="pill" data-bs-target="#workshop" type="button" role="tab" aria-controls="workshop" aria-selected="false" onclick="switchToWorkshopView()">workshops</button>
                   </li>
 
                 </ul>
@@ -228,19 +228,22 @@
     
     </section>
 
-    <section id="ticket-section">
+    <section id="ticket">
 
-        <div class="container-sm">
+        <div class="container-sm" id="ticket-section">
             
             <h1 class="section-title">tickets:</h1>
 
             <a>
-                <h3 class="text-decoration-underline" align="center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="color: blue;"> >>> hier entlang<<< </h3>
+                <h3 class="text-decoration-underline" align="center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="color: blue;"> >>> hier entlang <<< </h3>
             </a>
-
+            {% if expand_canvas_right %}
+                <div class="offcanvas offcanvas-end show" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            {% else %}
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            {% endif %}
                 <div class="offcanvas-header">
-                    <h5 id="offcanvasRightLabel">Ticketübersicht</h5>
+                    <h5 id="offcanvasRightLabel">ticketübersicht</h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 
@@ -249,19 +252,27 @@
                 <ul class="nav nav-pills mb-3" id="pills-tab-ticket" role="tablist">
                   {% if user.is_authenticated %}
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-status-tab" data-bs-toggle="pill" data-bs-target="#pills-status" type="button" role="tab" aria-controls="pills-status" aria-selected="true">Ticketstatus</button>
+                        <button class="nav-link active" id="pills-status-tab" data-bs-toggle="pill" data-bs-target="#pills-status" type="button" role="tab" aria-controls="pills-status" aria-selected="true">ticketstatus</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-logout-tab" data-bs-toggle="pill" data-bs-target="#pills-logout" type="button" role="tab" aria-controls="pills-logout" aria-selected="false">Account</button>
+                        <button class="nav-link" id="pills-logout-tab" data-bs-toggle="pill" data-bs-target="#pills-logout" type="button" role="tab" aria-controls="pills-logout" aria-selected="false">account</button>
                     </li>
                   {% else %}
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Einloggen</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Anmelden</button>
-                  </li>
+                    {% if expand_canvas_right == 'login'%}
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">einloggen</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">anmelden</button>
+                      </li>
+                    {% else %}
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">einloggen</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">anmelden</button>
                     {% endif %}
+                  {% endif %}
                 </ul>
                 
                 <div class="tab-content" id="pills-tabContent">
@@ -278,30 +289,50 @@
                     <form method="post">
                     {% csrf_token %}
                       <input type="hidden" id="form_goal" name="form_goal" value="logout">
-                      <button class="btn btn-dark" type="submit">Logout</button>
+                      <button class="btn btn-dark" type="submit">logout</button>
                     </form>
                   </div>
                     {% else %}
-                  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+                        {% if expand_canvas_right == 'login' %}
+                          <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
 
-                    <form method="post">
-                      {% csrf_token %}
-                      {{ login_form.as_p }}
-                      <input type="hidden" id="form_goal" name="form_goal" value="login">
-                      <button class="btn btn-dark" type="submit">Einloggen</button>
-                    </form>
+                            <form method="post">
+                              {% csrf_token %}
+                              {{ login_form.as_p }}
+                              <input type="hidden" id="form_goal" name="form_goal" value="login">
+                              <button class="btn btn-dark" type="submit">einloggen</button>
+                            </form>
 
-                  </div>
-                  <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
-                    <form method="post">
-                      {% csrf_token %}
-                      {{ register_form.as_p }}
-                      <input type="hidden" id="form_goal" name="form_goal" value="signup">
-                      <button class="btn btn-dark" type="submit">Anmelden</button>
-                    </form>
+                          </div>
+                          <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
+                            <form method="post">
+                              {% csrf_token %}
+                              {{ signup_form.as_p }}
+                              <input type="hidden" id="form_goal" name="form_goal" value="signup">
+                              <button class="btn btn-dark" type="submit">anmelden</button>
+                            </form>
+                          </div>
+                        {% else %}
+                            <div class="tab-pane fade" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
 
+                            <form method="post">
+                              {% csrf_token %}
+                              {{ login_form.as_p }}
+                              <input type="hidden" id="form_goal" name="form_goal" value="login">
+                              <button class="btn btn-dark" type="submit">einloggen</button>
+                            </form>
+
+                          </div>
+                          <div class="tab-pane fade show active" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
+                            <form method="post">
+                              {% csrf_token %}
+                              {{ signup_form.as_p }}
+                              <input type="hidden" id="form_goal" name="form_goal" value="signup">
+                              <button class="btn btn-dark" type="submit">anmelden</button>
+                            </form>
+                          </div>
+                        {% endif%}
                     {% endif %}
-                  </div>
                 </div>
                 </div>
             </div>
@@ -311,61 +342,57 @@
 
     </section>
 
-    <section id="faq-section">
+    <section id="faq">
         
-        <div class="container-sm">
+        <div class="container-sm" id="faq-section">
         <h1 class="section-title">faq:</h1>
 
-<div class="accordion" id="accordionExample">
+<div class="accordion" id="faq-accordion">
 
 <div class="container">
   <div class="row">
+
     <div class="col-sm">
-      
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                coming
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                nicht luschern
-              </div>
-            </div>
-          </div>
+    {% for faq in faq_list %}
+        {% if not forloop.counter|divisibleby:"2" %} {# is odd #}
         <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                ...
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                kuckuck!
-              </div>
-            </div>
+        <h2 class="accordion-header" id="heading{{forloop.counter}}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+            {{faq.topic}}
+          </button>
+        </h2>
+        <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="heading{{forloop.counter}}" data-bs-parent="#faq-accordion">
+          <div class="accordion-body">
+            {{faq.text}}
           </div>
+        </div>
       </div>
+         {% endif %}
+    {% endfor %}
+    </div>
     <div class="col-sm">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                soon
+
+        {% for faq in faq_list %}
+            {% if forloop.counter|divisibleby:"2" %} {# is even #}
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{forloop.counter}}">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+                {{faq.topic}}
               </button>
             </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse" aria-labelledby="heading{{forloop.counter}}" data-bs-parent="#faq-accordion">
               <div class="accordion-body">
-                hier steht auch noch nix
+                {{faq.text}}
               </div>
             </div>
           </div>
-    </div>
+          {% endif %}
+        {% endfor %}
+
+      </div>
   </div>
 </div>        
 
-          
-          
         </div>
     </div>
     </section>
