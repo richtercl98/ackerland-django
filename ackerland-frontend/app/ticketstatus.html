@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
@@ -38,8 +38,7 @@
         });
     </script>
 
-    <header style="background-color: #D2D8F0;">
-
+<header style="background-color: #D2D8F0;">
         <div id='header-container' class="container-sm d-flex justify-content-between align-items-center h-100 p-2">
           
           <div class="d-flex justify-content-baseline">
@@ -47,12 +46,12 @@
                 <a id="home-link" class="fs-1 align-items-center" href="/" style="color: #EE767A;">Talu</a>
           </div>
             <div class="d-inline-flex justify-content-center">
-              <nav class="nav nav-masthead justify-content-center align-items-center float-md-end d-md-flex">
-                <a class="nav-link fs-4 py-1 px-0" href="/#vision-section">vision</a>
-                <a class="nav-link fs-4 py-1 px-0" href="/#program-section">programm</a>
-                <a class="nav-link fs-4 py-1 px-0" href="">tickets</a>
-                <a class="nav-link fs-4 py-1 px-0" href="/#faq-section">faq</a>
-              </nav>
+              <nav class="nav nav-masthead justify-content-center align-items-center float-md-end d-none d-md-flex">
+            <a class="nav-link py-1 fs-4 px-0" href="/#vision">Vision</a>
+            <a class="nav-link py-1 fs-4 px-0" href="/#program">Programm</a>
+            <a class="nav-link py-1 fs-4 px-0" href="/#ticket">Tickets</a>
+            <a class="nav-link py-1 fs-4 px-0" href="/#faq">FAQ</a>
+          </nav>
 
             <nav class="navbar p-0 d-sm-flex d-md-none">
                 <button class="navbar-toggler h-100" type="button" id="OpenMenu">
@@ -65,16 +64,16 @@
                   <div class="offcanvas-body">
                     <ul class="navbar-nav d-flex justify-content-center align-items-center h-100">
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="/#vision">vision</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="/#vision">Vision</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="/#program">programm</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="/#program">Programm</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="">tickets</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="/#ticket">Tickets</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="/#faq">faq</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="/#faq">FAQ</a>
                       </li>
                     </ul>
                   </div>
@@ -82,7 +81,7 @@
             </nav>
 
             <script type="text/javascript">
-                    
+
                 // workaround: offcanvas navigation not jump back to top after
                 // clicking anchor link
                 document.addEventListener("DOMContentLoaded", function(){
@@ -96,16 +95,16 @@
                 });
             </script>
 
-            {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
             <div class="dropdown">
-              <button id="user-icon" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{user.name}}</button>
+              <button id="user-icon" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{user.vorname}}</button>
               <ul class="dropdown-menu">
                 <li>
                     <div class= "dropdown-item" >
                         <form method='post'>
                                 {% csrf_token %}
                                 <input type="hidden" id="form_goal" name="form_goal" value="logout">
-                                <button class="dropdown-item" type="submit" >logout</button>
+                                <button class="dropdown-item p-0" type="submit" >logout</button>
                         </form>
                     </div>
                 </li>
@@ -114,7 +113,6 @@
         {% else %}
             <a id="login-button"class="nav-link fs-4 ms-3 p-2 rounded text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">login</a>
         {% endif %}
-
         </div>
       </div>
 

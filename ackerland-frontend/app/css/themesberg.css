@@ -10965,8 +10965,7 @@ body {
  * Sections
  */
 section {
-  padding: 20px;
-  min-height: 100vh;
+  padding: 40px;
 }
 
 #hero {
@@ -10975,6 +10974,10 @@ section {
 
 #program {
   background-color: #F0EAD2;
+}
+
+#ticket{
+  background-color: #BAD9BF;
 }
 
 #faq {
@@ -11093,3 +11096,8 @@ td {
 td + td {
   width: auto;
 }
+
+.green-btn {
+  background-color: #BAD9BF !important;
+}
+

@@ -10,7 +10,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from .forms.userforms import BaseUserCreationForm
+from .forms.userforms import BaseUserCreationForm, CustomLoginForm
 
 from faq.models import Faq
 # credit: https://pypi.org/project/Django-Verify-Email/
@@ -27,7 +27,7 @@ class TicketStatusView(CreateView):
 
     def get(self, request, *args, **kwargs):
         context = {
-            'faq_list': Faq.objects.all()
+            'faq_list': Faq.objects.order_by('topic')
         }
         if request.user.is_authenticated:
             return render(request, self.template_name, context)
@@ -37,12 +37,13 @@ class TicketStatusView(CreateView):
     def post(self, request, *args, **kwargs):
         if request.POST['form_goal'] == USER_LOGOUT_GOAL:
             logout(request)
-            return HttpResponse('Logout successful. <a href="/">Return to Homepage</a>')
+
+            return redirect('home')
 
 class SignUpView(CreateView):
     signup_form = BaseUserCreationForm
     # form_class_signup = BaseUserCreationForm
-    login_form = AuthenticationForm
+    login_form = CustomLoginForm
     # success_url = reverse_lazy('login')
     template_name = 'signup.html'
     # success_template_name = 'registration/login.html'
@@ -51,7 +52,7 @@ class SignUpView(CreateView):
         context = {
             'login_form': self.login_form,
             'signup_form': self.signup_form,
-            'faq_list': Faq.objects.all(),
+            'faq_list': Faq.objects.order_by('topic'),
         }
         return render(request, self.template_name, context)
 
@@ -64,18 +65,25 @@ class SignUpView(CreateView):
 
         # Handle user logout
         if request.POST['form_goal'] == USER_LOGOUT_GOAL:
-            logout(request)
+            if request.user.is_authenticated:
+                context['logout'] = True
+                logout(request)
             return render(request, self.template_name, context)
+
         # Handle user signup
         if request.POST['form_goal'] == USER_SIGNUP_GOAL:
             signup_form = self.signup_form(request.POST)
             context['signup_form'] = signup_form
+            print('Signup Handling')
             if signup_form.is_valid():
+                print('Signup Valid - E-mail Sent')
                 inactive_user = send_verification_email(request, signup_form)
-                return HttpResponse('Verification Link has been sent to email provided. Follow instructions given in email. <a href="/">Return to Homepage</a>')
+                context['signup'] = True
+                return render(request, self.template_name, context)
             else:
                 context['expand_canvas_right'] = USER_SIGNUP_GOAL
                 return render(request, self.template_name, context)
+        
         # Handle user login
         if request.POST['form_goal'] == USER_LOGIN_GOAL:
             login_form = self.login_form(data=request.POST)
@@ -88,7 +96,8 @@ class SignUpView(CreateView):
                     )
                 if user is not None:
                     login(request, user)
-                return render(request, self.template_name, context)
+                #return render(request, self.template_name, context)
+                return redirect('ticketstatus')
             else:
                 # print('login not valid')
                 context['expand_canvas_right'] = USER_LOGIN_GOAL

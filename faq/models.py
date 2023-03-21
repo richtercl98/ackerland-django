@@ -9,7 +9,7 @@ class LowerCaseCharField(models.CharField):
         return str(value).lower()
 
 class Faq(models.Model):
-    topic = LowerCaseCharField(max_length=32, null=False, blank=False)
+    topic = models.CharField(max_length=32, null=False, blank=False)
     text = models.TextField()
     custom_order = models.PositiveIntegerField(unique=True, validators=[MinValueValidator(1)])
 
