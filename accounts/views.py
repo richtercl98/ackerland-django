@@ -23,7 +23,7 @@ USER_LOGOUT_GOAL = 'logout'
 class TicketStatusView(CreateView):
     form_class = BaseUserCreationForm
     form_class_login = AuthenticationForm
-    template_name = 'app/ticketstatus.html'
+    template_name = 'ticketstatus.html'
 
     def get(self, request, *args, **kwargs):
         context = {

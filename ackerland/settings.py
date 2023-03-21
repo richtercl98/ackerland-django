@@ -36,7 +36,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = config('DEBUG', cast=bool)
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
 'talu-festival.de',
@@ -100,8 +100,8 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PW')
 
 DEFAULT_FROM_EMAIL = config('EMAIL_ID')
 
-VERIFICATION_SUCCESS_TEMPLATE = "../ackerland-frontend/app/custom_verification_success.html"
-HTML_MESSAGE_TEMPLATE = "../ackerland-frontend/talu_verification_mail/verification_mail.html"
+VERIFICATION_SUCCESS_TEMPLATE = "../static/custom_verification_success.html"
+HTML_MESSAGE_TEMPLATE = "../static/verification_mail.html"
 #VERIFICATION_SUCCESS_TEMPLATE = None
 
 
