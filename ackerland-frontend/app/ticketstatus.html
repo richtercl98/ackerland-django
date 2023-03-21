@@ -3,11 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>Talu ticketstatus</title>
+    <title>Talu Ticketstatus</title>
     <link rel="stylesheet" href="{% static 'css/themesberg.css' %}">
     <link rel="stylesheet" href="https://use.typekit.net/uzf0aes.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -38,8 +38,7 @@
         });
     </script>
 
-    <header style="background-color: #D2D8F0;">
-
+<header style="background-color: #D2D8F0;">
         <div id='header-container' class="container-sm d-flex justify-content-between align-items-center h-100 p-2">
           
           <div class="d-flex justify-content-baseline">
@@ -47,12 +46,12 @@
                 <a id="home-link" class="fs-1 align-items-center" href="/" style="color: #EE767A;">Talu</a>
           </div>
             <div class="d-inline-flex justify-content-center">
-              <nav class="nav nav-masthead justify-content-center align-items-center float-md-end d-md-flex">
-                <a class="nav-link fs-4 py-1 px-0" href="/#vision-section">vision</a>
-                <a class="nav-link fs-4 py-1 px-0" href="/#program-section">programm</a>
-                <a class="nav-link fs-4 py-1 px-0" href="">tickets</a>
-                <a class="nav-link fs-4 py-1 px-0" href="/#faq-section">faq</a>
-              </nav>
+              <nav class="nav nav-masthead justify-content-center align-items-center float-md-end d-none d-md-flex">
+            <a class="nav-link py-1 fs-4 px-0" href="/#vision">Vision</a>
+            <a class="nav-link py-1 fs-4 px-0" href="/#program">Programm</a>
+            <a class="nav-link py-1 fs-4 px-0" href="/#ticket">Tickets</a>
+            <a class="nav-link py-1 fs-4 px-0" href="/#faq">FAQ</a>
+          </nav>
 
             <nav class="navbar p-0 d-sm-flex d-md-none">
                 <button class="navbar-toggler h-100" type="button" id="OpenMenu">
@@ -65,16 +64,16 @@
                   <div class="offcanvas-body">
                     <ul class="navbar-nav d-flex justify-content-center align-items-center h-100">
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="/#vision">vision</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="/#vision">Vision</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="/#program">programm</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="/#program">Programm</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="">tickets</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="/#ticket">Tickets</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-3 py-1 px-0" href="/#faq">faq</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="/#faq">FAQ</a>
                       </li>
                     </ul>
                   </div>
@@ -82,7 +81,7 @@
             </nav>
 
             <script type="text/javascript">
-                    
+
                 // workaround: offcanvas navigation not jump back to top after
                 // clicking anchor link
                 document.addEventListener("DOMContentLoaded", function(){
@@ -96,25 +95,24 @@
                 });
             </script>
 
-            {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
             <div class="dropdown">
-              <button id="user-icon" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{user.name}}</button>
+              <button id="user-icon" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> {{user.vorname}}</button>
               <ul class="dropdown-menu">
                 <li>
                     <div class= "dropdown-item" >
                         <form method='post'>
                                 {% csrf_token %}
                                 <input type="hidden" id="form_goal" name="form_goal" value="logout">
-                                <button class="dropdown-item" type="submit" >logout</button>
+                                <button class="dropdown-item p-0" type="submit" >Logout</button>
                         </form>
                     </div>
                 </li>
               </ul>
             </div>
         {% else %}
-            <a id="login-button"class="nav-link fs-4 ms-3 p-2 rounded text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">login</a>
+            <a id="login-button"class="nav-link fs-4 ms-3 p-2 rounded text-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Login</a>
         {% endif %}
-
         </div>
       </div>
 
@@ -124,27 +122,27 @@
     <section id="ticket-info">
         <div class="ticket-info container-sm">
 
-            <h1 class="section-title mb-4">ticketstatus</h1>
+            <h1 class="section-title mb-4">Ticketstatus</h1>
             <div class="vision-container row container-sm">
                     
                     <div class="col-lg-5 order-lg-last gx-lg-4">
                         
                         <div class="mb-4 py-3 px-4 rounded" style="background-color: #D2D8EE;">
                             <p class="fs-4 fw-bold mb-0"> 
-                                persönliche informationen
+                                Persönliche Informationen
                             </p>
 
                             <table class="table table-borderless fs-6 text-wrap mb-0">
                                 <tr>
-                                    <td class="fw-bold text-end">name</td>
+                                    <td class="fw-bold text-end">Name</td>
                                     <td>{{user.vorname}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold text-end">e-mail</td>
+                                    <td class="fw-bold text-end">E-Mail</td>
                                     <td>{{user.email}}</td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold text-end">eingeladen von</td>
+                                    <td class="fw-bold text-end">Eingeladen von</td>
                                     <td>{{user.eingeladen_von}}</td>
                             </table>
                         </div>
@@ -152,20 +150,20 @@
                     {% if user.bezahlt %}
                     <div id="bezahlt" class="col-lg-7 gx-lg-4">
                         <div class="mb-4 py-3 px-4 rounded d-flex justify-content-between align-items-center fs-4" style="background-color: #D2D8EE;">
-                            <p class="m-0 fs-4">Dein ticketstatus ist: </p>
+                            <p class="m-0 fs-4">Dein Ticketstatus ist: </p>
                             
-                            <div class="text-white p-2 rounded" style="background-color: #9CC5A1;">bezahlt</div>
-                            <div class="d-none bg-warning textcolor-grey p-2 rounded" style="color: white;"> nicht bezahlt</div>
+                            <div class="text-white p-2 rounded" style="background-color: #9CC5A1;">Bezahlt</div>
+                            <div class="d-none bg-warning textcolor-grey p-2 rounded" style="color: white;"> Nicht Bezahlt</div>
 
                         </div>
 
                         <div class="mb-4 py-3 px-4 rounded fs-5" style="background-color: #D2D8EE;">
-                            <p> Hey, herzlichen Glückwunsch. Deine Bezahlung ist bei uns eingegangen. Damit bist bist Du beim Talu-Festival dabei! 🥳🎉 <br>
-                            Hier noch die letzte Information du brauchst, um zu uns zu finden: </p>
+                            <p> Hey, herzlichen Glückwunsch. Deine Bezahlung ist bei uns eingegangen. Damit bist Du beim Talu-Festival dabei! 🥳🎉 <br>
+                            Hier noch die letzte Information, die Du brauchst, um zu uns zu finden: </p>
                             
-                           <p> adresse: <b>Unnerdörp, 18337 Marlow, Deutschland</b></p>
+                           <p> Adresse: <b>Unnerdörp, 18337 Marlow, Deutschland</b></p>
 
-                           <p> Alle weiteren Antworten auf Deine Fragen findest Du im <a href="index.html#faq" style="color:#9CC5A1;">faq</a>.</p>
+                           <p> Alle weiteren Antworten auf Deine Fragen findest Du im <a href="index.html#faq" style="color:#9CC5A1;">FAQ</a>.</p>
                         </div>
 
                         <iframe class="rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2095.401699027856!2d12.402126696868033!3d54.168417999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x794ddf101e3d5783!2zNTTCsDEwJzA2LjMiTiAxMsKwMjQnMTUuNSJF!5e1!3m2!1sde!2sus!4v1675519864257!5m2!1sde!2sus" style="border:0; width:100%;height:500px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -175,17 +173,17 @@
                     <div id="nicht-bezahlt" class="col-lg-7 gx-lg-4">
                         
                         <div class="mb-4 py-3 px-4 rounded d-flex justify-content-between align-items-center fs-4" style="background-color: #D2D8EE;">
-                            <p class="m-0">Dein ticketstatus ist: </p>
+                            <p class="m-0">Dein Ticketstatus ist: </p>
 
-                            <div class="text-white p-2 rounded" style="background-color: #EFC859;"> bezahlung ausstehend</div>
+                            <div class="text-white p-2 rounded" style="background-color: #EFC859;"> Bezahlung ausstehend</div>
 
                         </div>
 
                         <div class="mb-4 py-3 px-4 rounded fs-5" style="background-color: #D2D8EE;">
                             
-                            <p class="fs-4 fw-bold">überweisung</p>
+                            <p class="fs-4 fw-bold">Überweisung</p>
 
-                            <p class="mb-0"> Um so ein Festival auf die Beine zu stellen, müssen viele Anzahlungen für beispielsweise für das Gelände oder die Anlage gemacht werden. Aus diesem Grund brauchen wir im Hinblick auf das Finanzielle Planungssicherheit. Daher überweise uns bitte bis spätestens zum <b>01.04.2023</b> das Geld für das Ticket auf folgendes Konto:</p>
+                            <p class="mb-0"> Um so ein Festival auf die Beine zu stellen, müssen viele Anzahlungen für beispielsweise das Gelände oder die Anlage gemacht werden. Aus diesem Grund brauchen wir im Hinblick auf das Finanzielle Planungssicherheit. Daher überweise uns bitte bis spätestens zum <b>01.05.2023</b> die 22 € für das Ticket auf folgendes Konto:</p>
                             <table class="table table-borderless table-sm text-wrap fs-6 font-monospace">
                                 <tr>
                                     <td class="fw-bold text-end">Empfänger</td>
@@ -200,9 +198,9 @@
                                     <td>{{user.vorname}} {{user.nachname}} {{user.id}}, Talu Festival 2023</td>
                             </table>
 
-                            <p class="mb-2"> Sobald das Geld angekommen ist, bekommst du eine E-Mail von uns. Anschließend kannst du in diesem Bereich auch die Location des Geländes einsehen.</p>
+                            <p class="mb-2"> Sobald das Geld angekommen ist, kannst du in diesem Bereich auch die Location des Geländes einsehen.</p>
 
-                            <p class="text-black-50 fs-6">Hinweis: Die Änderung des Ticketstatus kann einige Zeit dauern, da wir jede Überweisung händisch überprüfen müssen. Also mach Dir keine Sorgen, wenn du nicht sofort eine Nachricht von uns bekommst.</p>
+                            <p class="text-black-50 fs-6">Hinweis: Die Änderung deines Ticketstatus kann einige Zeit dauern, da wir jede Überweisung händisch überprüfen müssen. Also mach Dir keine Sorgen, wenn sich Dein Status einige Tage nicht ändert.</p>
 
                         </div>
 
@@ -213,7 +211,7 @@
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
-                    <h5 id="offcanvasRightLabel">ticketübersicht</h5>
+                    <h5 id="offcanvasRightLabel">Ticketübersicht</h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
 
@@ -222,17 +220,17 @@
                 <ul class="nav nav-pills mb-3" id="pills-tab-ticket" role="tablist">
                   {% if user.is_authenticated %}
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="pills-status-tab" data-bs-toggle="pill" data-bs-target="#pills-status" type="button" role="tab" aria-controls="pills-status" aria-selected="true">ticketstatus</button>
+                        <button class="nav-link active" id="pills-status-tab" data-bs-toggle="pill" data-bs-target="#pills-status" type="button" role="tab" aria-controls="pills-status" aria-selected="true">Ticketstatus</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-logout-tab" data-bs-toggle="pill" data-bs-target="#pills-logout" type="button" role="tab" aria-controls="pills-logout" aria-selected="false">account</button>
+                        <button class="nav-link" id="pills-logout-tab" data-bs-toggle="pill" data-bs-target="#pills-logout" type="button" role="tab" aria-controls="pills-logout" aria-selected="false">Account</button>
                     </li>
                   {% else %}
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">einloggen</button>
+                    <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Einloggen</button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">anmelden</button>
+                    <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Anmelden</button>
                   </li>
                     {% endif %}
                 </ul>
@@ -251,7 +249,7 @@
                     <form method="post">
                     {% csrf_token %}
                       <input type="hidden" id="form_goal" name="form_goal" value="logout">
-                      <button class="btn btn-dark" type="submit">logout</button>
+                      <button class="btn btn-dark" type="submit">Logout</button>
                     </form>
                   </div>
                     {% else %}
@@ -261,7 +259,7 @@
                       {% csrf_token %}
                       {{ login_form.as_p }}
                       <input type="hidden" id="form_goal" name="form_goal" value="login">
-                      <button class="btn btn-dark" type="submit">einloggen</button>
+                      <button class="btn btn-dark" type="submit">Einloggen</button>
                     </form>
 
                   </div>
@@ -270,7 +268,7 @@
                       {% csrf_token %}
                       {{ signup_form.as_p }}
                       <input type="hidden" id="form_goal" name="form_goal" value="signup">
-                      <button class="btn btn-dark" type="submit">anmelden</button>
+                      <button class="btn btn-dark" type="submit">Anmelden</button>
                     </form>
 
                     {% endif %}

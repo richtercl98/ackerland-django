@@ -17,9 +17,9 @@ class BaseUserAdmin(UserAdmin):
     add_form = BaseUserCreationForm
     form = BaseUserChangeForm
     model = User
-    list_display = ['vorname', 'nachname', 'bezahlt', 'email', 'telefonnummer', 'eingeladen_von']
+    list_display = ['vorname', 'nachname', 'bezahlt', 'email','eingeladen_von']
     fieldsets = UserAdmin.fieldsets + (
-            (None, {'fields': ('vorname', 'nachname', 'bezahlt', 'telefonnummer', 'eingeladen_von')}),
+            (None, {'fields': ('vorname', 'nachname', 'bezahlt', 'eingeladen_von')}),
     ) #this will allow to change these fields in admin module
 
     actions = [make_payment_status_bezahlt]
