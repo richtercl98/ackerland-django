@@ -35,10 +35,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = config('DEBUG', cast=bool)
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
+#DEBUG = False
 
 ALLOWED_HOSTS = [
+'168.119.182.218',
 'talu-festival.de',
 'www.talu-festival.de',
 'localhost',
@@ -58,7 +59,6 @@ INSTALLED_APPS = [
     # Installed third party Apps
     'phonenumber_field',
     'verify_email.apps.VerifyEmailConfig',  # credit: https://pypi.org/project/Django-Verify-Email/
-    ''
 
     # My Apps
     #'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
@@ -82,8 +82,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+ #   'django.contrib.admin.middleware.AdminMiddleware',
      # credit:https://stackoverflow.com/questions/5836674/why-does-debug-false-setting-make-my-django-static-files-access-fail
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+#    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'ackerland.urls'
@@ -100,7 +101,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PW')
 
 DEFAULT_FROM_EMAIL = config('EMAIL_ID')
 
-VERIFICATION_SUCCESS_TEMPLATE = "../static/custom_verification_success.html"
+VERIFICATION_SUCCESS_TEMPLATE = "../static/custom_verification_success/custom_verification_success.html"
 HTML_MESSAGE_TEMPLATE = "../static/verification_mail.html"
 #VERIFICATION_SUCCESS_TEMPLATE = None
 
@@ -114,7 +115,7 @@ TEMPLATES = [
         # 'DIRS': [os.path.join(BASE_DIR, 'templates'),
         # os.path.join(BASE_DIR, 'ackerland-frontend')],      # In diesen Verzeichnissen sucht django nach HTML-Templates
         'DIRS': [
-                os.path.join(BASE_DIR, 'static')
+                os.path.join(BASE_DIR, 'static'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -136,7 +137,7 @@ WSGI_APPLICATION = 'ackerland.wsgi.application'
 
 if config('production', cast=bool):
     # Database settings on hetzner server
-    print('production')
+    # print('production')
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',

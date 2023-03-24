@@ -11,7 +11,7 @@ class LowerCaseCharField(models.CharField):
 class Faq(models.Model):
     topic = models.CharField(max_length=32, null=False, blank=False)
     text = models.TextField()
-    custom_order = models.PositiveIntegerField(unique=True, validators=[MinValueValidator(1)])
+#    custom_order = models.PositiveIntegerField(unique=True, validators=[MinValueValidator(1)])
 
     def __str__(self):
         return self.topic
