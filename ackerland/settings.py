@@ -101,7 +101,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PW')
 
 DEFAULT_FROM_EMAIL = config('EMAIL_ID')
 
-VERIFICATION_SUCCESS_TEMPLATE = "../static/custom_verification_success/custom_verification_success.html"
+VERIFICATION_SUCCESS_TEMPLATE = "../static/custom_verification_success.html"
 HTML_MESSAGE_TEMPLATE = "../static/verification_mail.html"
 #VERIFICATION_SUCCESS_TEMPLATE = None
 
