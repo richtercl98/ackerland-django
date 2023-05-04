@@ -87,6 +87,8 @@ target/
 __pycache__/
 local_settings.py
 
-staticfiles/
+static/
 .env
 db.sqlite3
+
+talu-env/

@@ -9,10 +9,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
-    vorname = models.CharField(max_length=64, null=True, blank=True)
-    nachname = models.CharField(max_length=64, null=True, blank=True)
-    telefonnummer = PhoneNumberField(blank=True)
+    vorname = models.CharField(max_length=64)
+    nachname = models.CharField(max_length=64)
     email = models.EmailField(max_length=256)
+
+    bezahlt = models.BooleanField(default=False)
 
     eingeladen_von = models.ForeignKey('Orga', on_delete=models.SET_NULL, null=True, related_name='eingeladen_von')
 
@@ -21,8 +22,6 @@ class User(AbstractUser):
 
 class Guest(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    bezahlt = models.BooleanField(default=False)
 
     def __str__(self):
         return '{} {}'.format(self.user.vorname, self.user.nachname)

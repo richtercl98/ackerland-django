@@ -11,7 +11,7 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 # credit: https://stackoverflow.com/questions/5836674/why-does-debug-false-setting-make-my-django-static-files-access-fail
-# from whitenoise.django import DjangoWhiteNoise
+#from whitenoise.django import DjangoWhiteNoise
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ackerland.settings')
 

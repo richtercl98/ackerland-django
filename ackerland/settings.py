@@ -20,7 +20,7 @@ from django.core.mail import send_mail
 
 SECRET_KEY = config('SECRET_KEY')
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'ticketstatus'
 LOGOUT_REDIRECT_URL = 'home'
 
 
@@ -36,8 +36,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
+#DEBUG = False
 
 ALLOWED_HOSTS = [
+'168.119.182.218',
 'talu-festival.de',
 'www.talu-festival.de',
 'localhost',
@@ -57,11 +59,11 @@ INSTALLED_APPS = [
     # Installed third party Apps
     'phonenumber_field',
     'verify_email.apps.VerifyEmailConfig',  # credit: https://pypi.org/project/Django-Verify-Email/
-    ''
 
     # My Apps
-    'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
+    #'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
     'accounts',
+    'faq',
 ]
 # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
 AUTH_USER_MODEL = 'accounts.User'
@@ -70,8 +72,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Fix bug in call of reverse() when new registrated user click on verification link
 LOGIN_URL = 'home'
-LOGIN_REDIRECT_URL = "home"
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = 'home'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,8 +82,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+ #   'django.contrib.admin.middleware.AdminMiddleware',
      # credit:https://stackoverflow.com/questions/5836674/why-does-debug-false-setting-make-my-django-static-files-access-fail
-    'whitenoise.middleware.WhiteNoiseMiddleware'
+#    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'ackerland.urls'
@@ -99,13 +101,22 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PW')
 
 DEFAULT_FROM_EMAIL = config('EMAIL_ID')
 
+VERIFICATION_SUCCESS_TEMPLATE = "../static/custom_verification_success.html"
+HTML_MESSAGE_TEMPLATE = "../static/verification_mail.html"
+#VERIFICATION_SUCCESS_TEMPLATE = None
+
+
 PHONENUMBER_DEFAULT_REGION = 'DE'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),
-        os.path.join(BASE_DIR, 'ackerland-frontend')],  # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
+        # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates'),
+        # os.path.join(BASE_DIR, 'ackerland-frontend')],      # In diesen Verzeichnissen sucht django nach HTML-Templates
+        'DIRS': [
+                os.path.join(BASE_DIR, 'static'),
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,17 +135,40 @@ WSGI_APPLICATION = 'ackerland.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'taludb',
-	'USER': 'taludbuser',
-	'PASSWORD': 'taludbuser_password',
-	'HOST': 'localhost',
-	'PORT': '',
+if config('production', cast=bool):
+    # Database settings on hetzner server
+    # print('production')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'taludb',
+    	'USER': 'taludbuser',
+    	'PASSWORD': 'taludbuser_password',
+    	'HOST': 'localhost',
+    	'PORT': '',
+        },
     }
-}
 
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'ackerland-frontend/app'),  # in diesen Verzeichnissen sucht manage.py collectstatic nach Statischen Dateien
+        os.path.join(BASE_DIR, 'ackerland-frontend/talu_verification_mail'),
+    ]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+else:
+    # print('DEVELOPMENT')
+    # Database settings in development
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+        }
+    }
+
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'ackerland-frontend/app'),  # in diesen Verzeichnissen sucht manage.py collectstatic nach Statischen Dateien
+        os.path.join(BASE_DIR, 'ackerland-frontend/talu_verification_mail'),
+    ]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')     # hier werden von manage.py collectstatic gesammelten Statische Dateien gespeichert
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -171,17 +205,11 @@ TIME_INPUT_FORMATS = [
     '%H:%M',        # '14:30'
 ]
 
-# Static files (CSS, JavaScript, Images)
+# Pfad aus dem Static files zurückgegeben werden (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'templates/'),
-    os.path.join(BASE_DIR, 'ackerland-frontend/app/'),
-    # os.path.join(BASE_DIR, "static/"),
-]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
