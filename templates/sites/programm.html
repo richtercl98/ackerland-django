@@ -142,7 +142,7 @@
                     {% for act in act_list %}
                     <div class="col-md-6 col-xl-4">
                         <div class="rect-img-container music-div">
-                            <img class="rect-img rounded" src="{%if act.image%}{{act.image.url}}{%else%}{% static 'img/transparent_Klein.png'%}{%endif}%" alt="{{act.stage_name}} Image">
+                            <img class="rect-img rounded" src="{%if act.image%}{{act.image.url}}{%else%}{% static 'img/transparent_Klein.png'%}{%endif%}" alt="{{act.stage_name}} Image">
                             <div class="overlay-bg rounded"></div>
                             <div class="overlay p-3">
                                 <p class="text-black-50 fs-6 mb-0">{% for user in act.corresponding_users.all %}
