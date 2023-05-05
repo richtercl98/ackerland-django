@@ -24,6 +24,15 @@ class BaseUserAdmin(UserAdmin):
 
     actions = [make_payment_status_bezahlt]
 
+    def bezahlt_user_count(self, obj):
+        return User.objects.filter(bezahlt=True).count()
+
+    bezahlt_user_count.short_description = "Anzahl Bezahlungen"
+
+    def income_count(self, obj):
+        return User.objects.filter(bezahlt=True).count() * 25
+
+    income_count.short_description = "Gesamtbudget"
 # class GuestAdmin(admin.ModelAdmin):
     # list_display = ['user', 'bezahlt']
     # fieldsets = admin.ModelAdmin.fieldsets + ((None, {'fields' : ('user', 'bezahlt')}),)
