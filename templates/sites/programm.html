@@ -146,7 +146,7 @@
                             <div class="overlay-bg rounded"></div>
                             <div class="overlay p-3">
                                 <p class="text-black-50 fs-6 mb-0">{% for user in act.corresponding_users %}
-                                    {% forloop.first %}
+                                    {% if forloop.first %}
                                         {{user.vorname}}
                                     {% else %}
                                         , {{user.vorname}}
@@ -180,7 +180,7 @@
                             <div class="overlay-bg rounded"></div>
                             <div class="overlay p-3">
                                 <p class="text-black-50 fs-6 mb-0">{% for user in workshop.corresponding_users %}
-                                    {% forloop.first %}
+                                    {% if forloop.first %}
                                         {{user.vorname}}
                                     {% else %}
                                         , {{user.vorname}}
