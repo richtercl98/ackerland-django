@@ -145,10 +145,15 @@
                             <img class="rect-img rounded" src="{{act.image.url}}" alt="{{act.stage_name}} Image">
                             <div class="overlay-bg rounded"></div>
                             <div class="overlay p-3">
-                                <p class="text-black-50 fs-6 mb-0">{{act.stage_name}}</p>
+                                <p class="text-black-50 fs-6 mb-0">{% for user in act.corresponding_users %}
+                                    {% forloop.first %}
+                                        {{user.vorname}}
+                                    {% else %}
+                                        , {{user.vorname}}
+                                    {% endif %}
+                                {% endfor %}</p>
                                 
-                                <h3 class="artist-title rounded">{{act.corresponding_user.vorname}}</h3>
-                                
+                                <h3 class="artist-title rounded">{{act.stage_name}}</h3>
                                 {% if act.insta_url|length %}
                                 <a style="color: inherit;" target="_blank" rel="noopener" href="{{act.insta_url}}"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
                                 {% endif %}
@@ -174,7 +179,13 @@
                             <img class="rect-img rounded" src="{{workshop.image.url}}" alt="{{workshop.name}} Image">
                             <div class="overlay-bg rounded"></div>
                             <div class="overlay p-3">
-                                <p class="text-black-50 fs-6 mb-0">{{workshop.corresponding_user.vorname}} {{workshop.corresponding_user.nachname}}</p>
+                                <p class="text-black-50 fs-6 mb-0">{% for user in workshop.corresponding_users %}
+                                    {% forloop.first %}
+                                        {{user.vorname}}
+                                    {% else %}
+                                        , {{user.vorname}}
+                                    {% endif %}
+                                {% endfor %}</p>
                                 <h3 class="artist-title rounded mb-2">{{workshop.name}}</h3>
                                 
                                 <p class="mb-1"><b>max. Personen:</b> {{workshop.max_participants}}</p>
