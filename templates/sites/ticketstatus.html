@@ -175,7 +175,7 @@
                         <div class="mb-4 py-3 px-4 rounded d-flex justify-content-between align-items-center fs-4" style="background-color: #D2D8EE;">
                             <p class="m-0">Dein Ticketstatus ist: </p>
 
-                            <div class="text-white p-2 rounded" style="background-color: #EFC859;"> {% if request.user.artist %}Unterstützer{% else %}Bezahlung ausstehend{%endif%}</div>
+                            <div class="text-white p-2 rounded" style="background-color: {% if request.user.artist %}#9CC5A1{%else%}#EFC859{%endif%};">{% if request.user.artist %}Unterstützer{% else %}Bezahlung ausstehend{%endif%}</div>
 
                         </div>
 
