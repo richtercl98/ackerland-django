@@ -23,8 +23,8 @@ from accounts.views import SignUpView, TicketStatusView
 from performances.views import ProgrammView
 
 urlpatterns = [
-    path('', SignUpView.as_view(template_name='index.html'), name='home'),
-    path('ticketstatus/',TicketStatusView.as_view(template_name='ticketstatus/ticketstatus.html'), name='ticketstatus'),
+    path('', SignUpView.as_view(), name='home'),
+    path('ticketstatus/',TicketStatusView.as_view(), name='ticketstatus'),
     path('admin/', admin.site.urls),
     path('programm/', ProgrammView.as_view(), name='programm'),
     path('accounts/', include(('accounts.urls', 'accounts'))),

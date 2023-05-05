@@ -12,18 +12,18 @@ class Act(models.Model):
     image = models.ImageField(upload_to='static/img/acts/')
     sound_sample_urls = MultiURLField(max_length=256, blank=True)
     insta_url = models.URLField(max_length=256, blank=True)
-    corresponding_user = models.OneToOneField(User)
+    corresponding_user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        return self.name
+        return self.stage_name
 
 class Workshop(models.Model):
     name = models.CharField(max_length=128)
     description = models.CharField(max_length=300)
     max_participants = models.IntegerField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
-    corresponding_user = models.OneToOneField(User)
-    image = models.ImageField(upload_to='static/img/workshops/')
+    corresponding_user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
+    image = models.ImageField(upload_to='static/img/workshops/', default=None)
 
     def __str__(self):
         return self.name
