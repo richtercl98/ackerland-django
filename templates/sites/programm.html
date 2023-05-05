@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.108.0">
-    <title>Talu Ticketstatus</title>
+    <title>Talu Programm</title>
     <link rel="icon" type="image/x-icon" href="{% static 'img/talu_festival-logo_transparent-small.png' %}">
     <link rel="stylesheet" href="{% static 'css/themesberg.css' %}">
     <link rel="stylesheet" href="https://use.typekit.net/uzf0aes.css">
@@ -49,7 +49,7 @@
             <div class="d-inline-flex justify-content-center">
               <nav class="nav nav-masthead justify-content-center align-items-center float-lg-end d-none d-lg-flex">
             <a class="nav-link py-1 fs-4 px-0" href="/#vision">Vision</a>
-            <a class="nav-link py-1 fs-4 px-0" href="/#program">Programm</a>
+            <a class="nav-link py-1 fs-4 px-0" href="">Programm</a>
             <a class="nav-link py-1 fs-4 px-0" href="/#ticket">Tickets</a>
             <a class="nav-link py-1 fs-4 px-0" href="/#faq">FAQ</a>
           </nav>
@@ -68,7 +68,7 @@
                         <a class="nav-link fs-2 py-1 px-0" href="/#vision">Vision</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
-                        <a class="nav-link fs-2 py-1 px-0" href="/#program">Programm</a>
+                        <a class="nav-link fs-2 py-1 px-0" href="">Programm</a>
                       </li>
                       <li class="nav-item" data-bs-dismiss="offcanvas">
                         <a class="nav-link fs-2 py-1 px-0" href="/#ticket">Tickets</a>
@@ -123,8 +123,8 @@
         <div class="container">
             <h1 class="section-title">Programm</h1>
 
-            <div class="p-4 mb-3 rounded fs-6 d-none" style="background-color: #D2D8EE"> Das Talu Festival ist ein einzigartiges Event, das nur möglich wird, weil wir in unserem erweiterten Freundeskreis kreative Menschen haben, die ihre künstlerischen Talente ausleben möchten. Uns liegt viel daran ein nicht-kommerzielles Festival zu sein und nicht viel Geld von euch einzufordern. Zu unserem Glück verzichten alle Künstler auf eine Gage. Daher an dieser Stelle schon mal Props an euch!<br>
-            Auf dieser Seite möchten wir den Künstler*innen eine zusätzliche Bühne bieten um sich in eigenen Worten vorzustellen.</div>
+            <div class="p-4 mb-3 rounded fs-6 d-none" style="background-color: #D2D8EE"> Das Talu Festival ist ein einzigartiges Event, das nur möglich ist, weil wir in unserem erweiterten Freundeskreis kreative Menschen haben, die ihre künstlerischen Talente ausleben möchten. Uns liegt viel daran ein nicht-kommerzielles Festival zu sein und nicht viel Geld von euch einzufordern. Zu unserem Glück verzichten alle Künstler auf eine Gage. Daher an dieser Stelle schon mal Props an euch!<br>
+            Auf dieser Seite möchten wir den Künstler*innen eine zusätzliche Bühne bieten, um sich in eigenen Worten vorzustellen.</div>
             
 
             <ul class="nav nav-pills mb-3 justify-content-center mb-4" id="pills-tab" role="tablist">
@@ -153,7 +153,7 @@
                                 <a style="color: inherit;" target="_blank" rel="noopener" href="{{act.insta_url}}"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
                                 {% endif %}
                                 
-                                {% if act.sound_sample_urls|length %}
+                                {% if act.sound_sample_url|length %}
                                 <a style="color: inherit;" target="_blank" rel="noopener" href="{{url}}"><i class="fa fa-soundcloud" aria-hidden="true"></i></a>
                                 {% endif %}
                                 
