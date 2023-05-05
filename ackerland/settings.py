@@ -23,10 +23,8 @@ SECRET_KEY = config('SECRET_KEY')
 LOGIN_REDIRECT_URL = 'ticketstatus'
 LOGOUT_REDIRECT_URL = 'home'
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -44,7 +42,6 @@ ALLOWED_HOSTS = [
 'www.talu-festival.de',
 'localhost',
 '127.0.0.1']
-
 
 # Application definition
 
@@ -64,6 +61,7 @@ INSTALLED_APPS = [
     #'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
     'accounts',
     'faq',
+    'performances',
 ]
 # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
 AUTH_USER_MODEL = 'accounts.User'
