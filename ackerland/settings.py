@@ -149,7 +149,7 @@ if config('production', cast=bool):
 
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'ackerland-frontend/app'),  # in diesen Verzeichnissen sucht manage.py collectstatic nach Statischen Dateien
-        os.path.join(BASE_DIR, 'ackerland-frontend/talu_verification_mail'),
+        os.path.join(BASE_DIR, 'ackerland-frontend/emails'),
     ]
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 else:
@@ -164,7 +164,7 @@ else:
 
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'ackerland-frontend/app'),  # in diesen Verzeichnissen sucht manage.py collectstatic nach Statischen Dateien
-        os.path.join(BASE_DIR, 'ackerland-frontend/talu_verification_mail'),
+        os.path.join(BASE_DIR, 'ackerland-frontend/emails'),
     ]
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')     # hier werden von manage.py collectstatic gesammelten Statische Dateien gespeichert
 
