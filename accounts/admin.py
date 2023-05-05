@@ -17,7 +17,7 @@ class BaseUserAdmin(UserAdmin):
     add_form = BaseUserCreationForm
     form = BaseUserChangeForm
     model = User
-    list_display = ['vorname', 'nachname', 'bezahlt', 'email','eingeladen_von']
+    list_display = ['vorname', 'nachname', 'bezahlt', 'email','eingeladen_von', 'bezahlt_user_count', 'income_count']
     fieldsets = UserAdmin.fieldsets + (
             (None, {'fields': ('vorname', 'nachname', 'bezahlt', 'eingeladen_von')}),
     ) #this will allow to change these fields in admin module
