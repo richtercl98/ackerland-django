@@ -230,10 +230,10 @@
 
                             <ul class="programm-list fs-5">
                                 {% for act in act_list %}
-                                    <li>{{act.stage_name}}</li>
+                                    <li class="fs-5">{{act.stage_name}}</li>
                                 {% endfor %}
-                            </ul>
-                            <a class="text-muted text-center text-decoration-none fst-italic mb-1" href="programm&active=acts" style="font-size: 0.8em">mehr infos</a>
+                            </ul><br>
+                            <a class="text-muted text-center text-decoration-none fst-italic mb-1" href="programm?active=acts" style="font-size: 0.8em">mehr infos</a>
                         </div>
 
                     </div>
@@ -244,10 +244,10 @@
 
                             <ul class="programm-list fs-5">
                                 {% for workshop in workshop_list %}
-                                    <li>{{workshop.name}}</li>
+                                    <li class="fs-5">{{workshop.name}}</li>
                                 {% endfor %}
-                            </ul>
-                            <a class="text-muted text-center text-decoration-none fst-italic mb-1" href="programm&active=workshop" style="font-size: 0.8em">mehr infos</a>
+                            </ul><br>
+                            <a class="text-muted text-center text-decoration-none fst-italic mb-1" href="programm?active=workshop" style="font-size: 0.8em">mehr infos</a>
                         </div>
                         
                     </div>
