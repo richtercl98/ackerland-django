@@ -148,29 +148,6 @@
                             </table>
                         </div>
                     </div>
-                    {% if request.user.artist %}
-                    <div id="bezahlt" class="col-lg-7 gx-lg-4">
-                        <div class="mb-4 py-3 px-4 rounded d-flex justify-content-between align-items-center fs-4" style="background-color: #D2D8EE;">
-                            <p class="m-0 fs-4">Dein Ticketstatus ist: </p>
-
-                            <div class="text-white p-2 rounded" style="background-color: #9CC5A1;">Bezahlt</div>
-                            <div class="d-none bg-warning textcolor-grey p-2 rounded" style="color: white;"> Nicht Bezahlt</div>
-
-                        </div>
-
-                        <div class="mb-4 py-3 px-4 rounded fs-5" style="background-color: #D2D8EE;">
-                            <p> Hey, herzlichen Glückwunsch. Deine Bezahlung ist bei uns eingegangen. Damit bist du beim Talu-Festival dabei! 🥳🎉 <br>
-                            Hier noch die letzte Information, die du brauchst, um zu uns zu finden: </p>
-
-                           <p> Adresse: <b>Unnerdörp, 18337 Marlow, Deutschland</b></p>
-
-                           <p> Alle weiteren Antworten auf deine Fragen findest du im <a href="index.html#faq" style="color:#9CC5A1;">FAQ</a>.</p>
-                        </div>
-
-                        <iframe class="rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2095.401699027856!2d12.402126696868033!3d54.168417999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x794ddf101e3d5783!2zNTTCsDEwJzA2LjMiTiAxMsKwMjQnMTUuNSJF!5e1!3m2!1sde!2sus!4v1675519864257!5m2!1sde!2sus" style="border:0; width:100%;height:500px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                    </div>
-                    {% endif %}
                     {% if user.bezahlt %}
                     <div id="bezahlt" class="col-lg-7 gx-lg-4">
                         <div class="mb-4 py-3 px-4 rounded d-flex justify-content-between align-items-center fs-4" style="background-color: #D2D8EE;">
@@ -181,7 +158,7 @@
                         </div>
 
                         <div class="mb-4 py-3 px-4 rounded fs-5" style="background-color: #D2D8EE;">
-                            <p> Hey, herzlichen Glückwunsch. Deine Bezahlung ist bei uns eingegangen. Damit bist du beim Talu-Festival dabei! 🥳🎉 <br>
+                            <p>Hey, herzlichen Glückwunsch. Deine Bezahlung ist bei uns eingegangen. Damit bist du beim Talu Festival dabei! 🥳🎉<br>
                             Hier noch die letzte Information, die du brauchst, um zu uns zu finden: </p>
                             
                            <p> Adresse: <b>Unnerdörp, 18337 Marlow, Deutschland</b></p>
@@ -198,7 +175,7 @@
                         <div class="mb-4 py-3 px-4 rounded d-flex justify-content-between align-items-center fs-4" style="background-color: #D2D8EE;">
                             <p class="m-0">Dein Ticketstatus ist: </p>
 
-                            <div class="text-white p-2 rounded" style="background-color: #EFC859;"> Bezahlung ausstehend</div>
+                            <div class="text-white p-2 rounded" style="background-color: #EFC859;"> {% if request.user.artist %}Unterstützer{% else %}Bezahlung ausstehend{%endif%}</div>
 
                         </div>
 
@@ -206,7 +183,17 @@
                             
                             <p class="fs-4 fw-bold">Überweisung</p>
 
-                            <p class="mb-0"> Um so ein Festival auf die Beine zu stellen, müssen viele Anzahlungen für beispielsweise das Gelände oder die Anlage gemacht werden. Aus diesem Grund brauchen wir im Hinblick auf das Finanzielle Planungssicherheit. Daher überweise uns bitte bis spätestens zum <b>01.05.2023</b> die 25 € für das Ticket auf folgendes Konto:</p>
+                            <p class="mb-0">{% if request.user.artist %}Dickes Danke, dass du beim Talu Festival dabei bist! Für dich ist das Ticket gratis. Wir sehen uns! 🥳🎉{%else%}<br>
+                            Hier noch die letzte Information, die du brauchst, um zu uns zu finden: {%else%}Um so ein Festival auf die Beine zu stellen, müssen viele Anzahlungen für beispielsweise das Gelände oder die Anlage gemacht werden. Aus diesem Grund brauchen wir im Hinblick auf das Finanzielle Planungssicherheit. Daher überweise uns bitte bis spätestens zum <b>01.05.2023</b> die 25 € für das Ticket auf folgendes Konto:{%endif%}</p>
+
+                            {% if request.user.artist%}
+                            <p> Adresse: <b>Unnerdörp, 18337 Marlow, Deutschland</b></p>
+
+                            <p> Alle weiteren Antworten auf deine Fragen findest du im <a href="index.html#faq" style="color:#9CC5A1;">FAQ</a>.</p>
+                            </div>
+
+                            <iframe class="rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2095.401699027856!2d12.402126696868033!3d54.168417999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x794ddf101e3d5783!2zNTTCsDEwJzA2LjMiTiAxMsKwMjQnMTUuNSJF!5e1!3m2!1sde!2sus!4v1675519864257!5m2!1sde!2sus" style="border:0; width:100%;height:500px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            {%else%}
                             <table class="table table-borderless table-sm text-wrap fs-6 font-monospace">
                                 <tr>
                                     <td class="fw-bold text-end">Empfänger</td>
@@ -225,6 +212,7 @@
 
                             <p class="text-black-50 fs-6">Hinweis: Die Änderung deines Ticketstatus kann einige Zeit dauern, da wir jede Überweisung händisch überprüfen müssen. Also mach dir keine Sorgen, wenn sich dein Status einige Tage nicht ändert.</p>
 
+                        {% endif %}
                         </div>
 
                     </div>
