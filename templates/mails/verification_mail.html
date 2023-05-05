@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://use.typekit.net/uzf0aes.css">
+
+    <link rel="stylesheet" type="text/css" href="mail_verification.css">
+
+    <title>Bestätigung der E-Mail-Adresse</title>
+
+    <style>
+        .format-font {
+            font-family: Futura-pt, sans-serif;
+
+        }
+        .my-container {
+            margin: 10px;
+            padding: 10px;
+            padding-top: 0px;
+            justify-content: center;
+            border-radius: 5px;
+            border: 1px solid rgb(204, 203, 203);
+            background-color: #F0E9D2;
+        }
+
+
+        #logo{
+            display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 200px;
+          margin-top: 15px;
+        }
+
+        .my-button {
+            padding: 10px;
+            padding-left: 35px;
+            padding-right: 35px;
+            background-color: #9CC5A1;
+            color: white;
+            border-radius: 25px;
+            transition-duration: 500ms;
+            text-decoration: none;
+
+        }
+        .my-button:hover {
+            color: #9CC5A1;
+            background-color: white;
+            border-radius: 0px;
+            border: 1px solid #9CC5A1;
+            transition-duration: 200ms;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="my-container">
+        
+        <img id="logo" alt="talu_festival_logo" src="https://talu-festival.de/static/img/talu_festival-logo_transparent_md.png" width=200px style="">
+
+        <div style="background-color: #9CC5A1; border-radius: 15px;">
+            <h1 class="format-font" style="text-align: center; padding: 2px; color:white;">
+                Aktiviere Deinen Account
+            </h1>
+        </div>
+
+        <h2 class="format-font" style="text-align: center;">E-Mail Bestätigung</h2> <hr style="background-color:  rgb(110, 3, 211); width:100px">
+
+        <div class="format-font" style="margin-top: 20px; line-height:1.5;">
+            <p style="text-align: center; font-weight: bold;">Grüß Dich!</p>
+            Du erhälst diese E-Mail, weil Du Dich soebend für das Talu-Festival registriert hast. Damit Du Deinen Ticket-Kauf abschließen kannst, muss Du zunächst Deine E-Mail bestätigen und so Deinen Account aktivieren.
+        </div>
+
+        <p class="format-font" style="text-align: center; margin-top:=50px;">
+            Bitte bestätige Deine E-Mail:
+            <hr style="background-color:  rgb(110, 3, 211); width:50px">
+            <div class="format-font" style="text-align: center; margin-top: 30px;" >
+            <a href="{{link}}" class="my-button">Bestätigen</a>
+            </div>
+
+        </p>
+
+        <p class="format-font" style="margin-top: 50px;">
+           <b> Nachdem Du Deinen Account aktiviert hast, kannst Du Dein Ticketpreis bezahlen und dann bist Du dabei!</b>
+        </p>
+
+        <p class="format-font" style="line-height: 1.5;">
+                Diese E-Mail wird automatisch generiert.
+                <br>
+                Bitte antworte nicht auf diese E-Mail.
+        </p>
+
+    </div>
+</body>
+</html>

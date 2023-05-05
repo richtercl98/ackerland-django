@@ -110,10 +110,10 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates'),
-        # os.path.join(BASE_DIR, 'ackerland-frontend')],      # In diesen Verzeichnissen sucht django nach HTML-Templates
+        # In diesen Verzeichnissen sucht django nach HTML-Templates
         'DIRS': [
-                os.path.join(BASE_DIR, 'static'),
+                os.path.join(BASE_DIR, 'templates/sites'),
+                os.path.join(BASE_DIR, 'templates/mails'),
             ],
         'APP_DIRS': True,
         'OPTIONS': {
