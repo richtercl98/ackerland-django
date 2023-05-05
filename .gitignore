@@ -89,7 +89,6 @@ local_settings.py
 
 static/
 images/
-templates/
 .env
 db.sqlite3
 
