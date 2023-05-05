@@ -13,6 +13,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms.userforms import BaseUserCreationForm, CustomLoginForm
 
 from faq.models import Faq
+from performances.models import Act, Workshop
 # credit: https://pypi.org/project/Django-Verify-Email/
 from verify_email.email_handler import send_verification_email
 
@@ -53,6 +54,8 @@ class SignUpView(CreateView):
             'login_form': self.login_form,
             'signup_form': self.signup_form,
             'faq_list': Faq.objects.order_by('topic'),
+            'act_list': Act.objects.order_by('stage_name'),
+            'workshop_list': Workshop.objects.order_by('name'),
         }
         return render(request, self.template_name, context)
 
@@ -61,6 +64,8 @@ class SignUpView(CreateView):
             'login_form': self.login_form,
             'signup_form': self.signup_form,
             'faq_list': Faq.objects.all(),
+            'act_list': Act.objects.order_by('stage_name'),
+            'workshop_list': Workshop.objects.order_by('name'),
         }
 
         # Handle user logout
@@ -74,9 +79,7 @@ class SignUpView(CreateView):
         if request.POST['form_goal'] == USER_SIGNUP_GOAL:
             signup_form = self.signup_form(request.POST)
             context['signup_form'] = signup_form
-            print('Signup Handling')
             if signup_form.is_valid():
-                print('Signup Valid - E-mail Sent')
                 inactive_user = send_verification_email(request, signup_form)
                 context['signup'] = True
                 return render(request, self.template_name, context)

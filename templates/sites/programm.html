@@ -117,8 +117,7 @@
         </div>
       </div>
 
-    </header>
-
+</header>
 
      <section>
         <div class="container">
@@ -130,15 +129,15 @@
 
             <ul class="nav nav-pills mb-3 justify-content-center mb-4" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-acts-tab" data-bs-toggle="pill" data-bs-target="#pills-acts" type="button" role="tab" aria-controls="pills-acts" aria-selected="true">Musik</button>
+                <button class="nav-link-programm active" id="pills-acts-tab" data-bs-toggle="pill" data-bs-target="#pills-acts" type="button" role="tab" aria-controls="pills-acts" aria-selected="true">Musik</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-workshop-tab" data-bs-toggle="pill" data-bs-target="#pills-workshop" type="button" role="tab" aria-controls="pills-workshop" aria-selected="false">Workshops</button>
+                <button class="nav-link-programm" id="pills-workshop-tab" data-bs-toggle="pill" data-bs-target="#pills-workshop" type="button" role="tab" aria-controls="pills-workshop" aria-selected="false">Workshops</button>
                 </li>
             </ul>
             
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade" id="pills-acts" role="tabpanel" aria-labelledby="pills-acts-tab" tabindex="0">
+                <div class="tab-pane fade active show" id="pills-acts" role="tabpanel" aria-labelledby="pills-acts-tab" tabindex="0">
                 <div class="row g-3">
                     {% for act in act_list %}
                     <div class="col-md-6 col-xl-4">
@@ -155,9 +154,7 @@
                                 {% endif %}
                                 
                                 {% if act.sound_sample_urls|length %}
-                                {% for url in act.sound_sample_urls %}
                                 <a style="color: inherit;" target="_blank" rel="noopener" href="{{url}}"><i class="fa fa-soundcloud" aria-hidden="true"></i></a>
-                                {% endfor %}
                                 {% endif %}
                                 
                                 <p>{{act.description}}</p>
@@ -168,7 +165,7 @@
                     {% endfor %}
                 </div>
                 </div>
-                <div class="tab-pane fade show active" id="pills-workshop" role="tabpanel" aria-labelledby="pills-workshop-tab" tabindex="0">
+                <div class="tab-pane fade" id="pills-workshop" role="tabpanel" aria-labelledby="pills-workshop-tab" tabindex="0">
                 <div class="row g-3">
                     
                     {% for workshop in workshop_list %}
@@ -194,6 +191,24 @@
         </div>
     </section> 
 
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            var searchParams = new URLSearchParams(window.location.search)
+            if(searchParams.has('active')){
+                if(searchParams.get('active') == "workshop") {
+                    $('#pills-workshop-tab').classList.toggle('active');
+                    $('#pills-acts-tab').classList.toggle('active');
+
+                    $('#pills-workshop').classList.toggle('active').toggle('show');
+                    $('#pills-acts').classList.toggle('active').toggle('show')
+
+                    // delete verfication search param
+                    window.history.pushState({}, document.title, "/");
+                }
+            }
+        });
+    </script>
 
   </body>
 </html>

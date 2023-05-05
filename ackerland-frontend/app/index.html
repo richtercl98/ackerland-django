@@ -228,11 +228,12 @@
 
                         <div class="artists p-2 d-flex">
                             
-                            <p class="w-100 h-100 d-flex justify-content-center align-items-center text-muted fs-5">tba</p>
-                            <!--
-                            <ul id="artist-list">
+                            <ul class="programm-list fs-5">
+                                {% for act in act_list %}
+                                    <li>{{act.stage_name}}</li>
+                                {% endfor %}
                             </ul>
-                        -->
+                            <a class="text-muted text-center text-decoration-none fst-italic mb-1" href="programm&active=acts" style="font-size: 0.8em">mehr infos</a>
                         </div>
 
                     </div>
@@ -241,11 +242,12 @@
 
                         <div class="artists p-2 d-flex">
 
-                            <p class="w-100 h-100 d-flex justify-content-center align-items-center text-white-50 fs-5">tba</p>
-                            
-<!--                             <ul id="artist-list">
-                                <li>:)</li>
-                            </ul> -->
+                            <ul class="programm-list fs-5">
+                                {% for workshop in workshop_list %}
+                                    <li>{{workshop.name}}</li>
+                                {% endfor %}
+                            </ul>
+                            <a class="text-muted text-center text-decoration-none fst-italic mb-1" href="programm&active=workshop" style="font-size: 0.8em">mehr infos</a>
                         </div>
                         
                     </div>
@@ -387,13 +389,7 @@
                 </div>
                 </div>
             </div>
-
         </div>
-
-
- 
-        
-
     </section>
 
     <section id="faq">

@@ -11024,7 +11024,7 @@ section {
   margin-top: 20px;
 }
 
-#artist-list {
+.programm-list {
   display: flex;
   align-self: center;
   flex-wrap: wrap;
@@ -11032,7 +11032,7 @@ section {
   padding: 0;
 }
 
-#artist-list li {
+.programm-list li {
   display: inline;
   font-size: 2rem;
   padding: 1rem;
@@ -11158,3 +11158,99 @@ td + td {
   background-color: #BAD9BF !important;
   color: black;
 }
+
+/*
+ * Programm
+ */
+
+.rect-img-container {
+      position: relative;
+    }
+
+    .rect-img-container::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+      background-color: rgba(187, 218, 192, 0.7);
+      border-radius: 0.375rem;
+    }
+
+    .rect-img {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1);
+      filter: grayscale(1);
+    }
+
+    .overlay-heading{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 80px;
+      transition: .5s ease;
+      //color: white
+    }
+
+    .rect-img-container:hover .overlay {
+      height: 100%;
+    }
+    .overlay-bg {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      //mix-blend-mode: screen;
+    }
+
+    .music-div > .overlay-bg{
+        background-color: rgba(187, 218, 192, 0.7);
+    }
+    .music-div > .artist-title{
+        background-color: #EE767A;
+    }
+
+
+    .workshop-div > .overlay-bg{
+        background-color: rgba(210, 216, 238, 0.7);
+    }
+    .workshop-div > .artist-title{
+        background-color: #BBDAC0;
+    }
+
+
+    .overlay > *{
+        padding-left: 4px;
+    }
+    .artist-title {
+        background-color: #EE767A;
+        color: white;
+        font-weight: 500;
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+    .music-div > .artist-title{
+        background-color: #BBDAC0;
+    }
+    .nav-link-programm{
+        color: black;
+    }
+    .nav-link-programm:hover{
+        color: grey;
+    }
+    .nav-link-programm.active {
+        color: white !important;
+        background-color: #EE767A !important;
+    }

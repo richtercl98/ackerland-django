@@ -10,7 +10,7 @@ class Act(models.Model):
     description = models.CharField(max_length=400)
     genre = models.CharField(max_length=64, blank=True)
     image = models.ImageField(upload_to='static/img/acts/')
-    sound_sample_urls = MultiURLField(max_length=256, blank=True)
+    sound_sample_url = models.URLField(max_length=256, blank=True)
     insta_url = models.URLField(max_length=256, blank=True)
     corresponding_user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
 
