@@ -13,7 +13,4 @@ class ProgrammView(TemplateView):
             'workshop_list': Workshop.objects.order_by('name')
         }
 
-        if request.user.is_authenticated:
-            return render(request, self.template_name, context)
-        else:
-            return redirect('home')
+        return render(request, self.template_name, context)
