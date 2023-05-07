@@ -34,7 +34,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool)
-#DEBUG = True
 
 ALLOWED_HOSTS = [
 '168.119.182.218',
@@ -52,37 +51,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     # Installed third party Apps
     'phonenumber_field',
     'verify_email.apps.VerifyEmailConfig',  # credit: https://pypi.org/project/Django-Verify-Email/
-
     # My Apps
-    #'timeline', # credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
     'accounts',
     'faq',
     'performances',
-]
-# credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
-AUTH_USER_MODEL = 'accounts.User'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
-
-# Fix bug in call of reverse() when new registrated user click on verification link
-LOGIN_URL = 'home'
-LOGIN_REDIRECT_URL = 'home'
-
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
- #   'django.contrib.admin.middleware.AdminMiddleware',
-     # credit:https://stackoverflow.com/questions/5836674/why-does-debug-false-setting-make-my-django-static-files-access-fail
-#    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'ackerland.urls'
@@ -99,8 +74,8 @@ EMAIL_HOST_PASSWORD = config('EMAIL_PW')
 
 DEFAULT_FROM_EMAIL = config('EMAIL_ID')
 
-VERIFICATION_SUCCESS_TEMPLATE = "../static/custom_verification_success.html"
-HTML_MESSAGE_TEMPLATE = "../static/verification_mail.html"
+VERIFICATION_SUCCESS_TEMPLATE = "custom_verification_success.html"
+HTML_MESSAGE_TEMPLATE = "verification_mail.html"
 #VERIFICATION_SUCCESS_TEMPLATE = None
 
 
@@ -148,8 +123,9 @@ if config('production', cast=bool):
     }
 
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'ackerland-frontend/app'),  # in diesen Verzeichnissen sucht manage.py collectstatic nach Statischen Dateien
-        os.path.join(BASE_DIR, 'ackerland-frontend/emails'),
+        os.path.join(BASE_DIR, 'templates/sites'),  # in diesen Verzeichnissen sucht manage.py collectstatic nach Statischen Dateien
+        os.path.join(BASE_DIR, 'templates/mails'),
+        os.path.join(BASE_DIR, 'ackerland-frontend/app'),
     ]
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 else:
@@ -163,11 +139,15 @@ else:
     }
 
     STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'ackerland-frontend/app'),  # in diesen Verzeichnissen sucht manage.py collectstatic nach Statischen Dateien
-        os.path.join(BASE_DIR, 'ackerland-frontend/emails'),
+        os.path.join(BASE_DIR, 'templates/sites'),  # in diesen Verzeichnissen sucht manage.py collectstatic nach Statischen Dateien
+        os.path.join(BASE_DIR, 'templates/mails'),
+        os.path.join(BASE_DIR, 'ackerland-frontend/app'),
     ]
     STATIC_ROOT = os.path.join(BASE_DIR, 'static/')     # hier werden von manage.py collectstatic gesammelten Statische Dateien gespeichert
 
+# Pfad aus dem Static files zurückgegeben werden (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.1/howto/static-files/
+STATIC_URL = 'static/'
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -186,27 +166,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
-
 LANGUAGE_CODE = 'de-ger'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
-
 
 TIME_INPUT_FORMATS = [
     '%H:%M',        # '14:30'
 ]
-
-# Pfad aus dem Static files zurückgegeben werden (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = 'static/'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -216,5 +185,26 @@ STATICFILES_FINDERS = (
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# credit: https://saralgyaan.com/posts/how-to-extend-django-user-model-using-abstractuser/
+AUTH_USER_MODEL = 'accounts.User'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+# Fix bug in call of reverse() when new registrated user click on verification link
+LOGIN_URL = 'home'
+LOGIN_REDIRECT_URL = 'home'
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+ #   'django.contrib.admin.middleware.AdminMiddleware',
+     # credit:https://stackoverflow.com/questions/5836674/why-does-debug-false-setting-make-my-django-static-files-access-fail
+#    'whitenoise.middleware.WhiteNoiseMiddleware'
+]

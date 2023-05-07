@@ -100,6 +100,9 @@
             <div class="dropdown">
               <button id="user-icon" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> {{user.vorname}}</button>
               <ul class="dropdown-menu">
+                <li class="dropdown-item">
+                    <a class="nav-link" href="/ticketstatus">Ticketstatus</a>
+                </li>
                 <li>
                     <div class= "dropdown-item" >
                         <form method='post'>
@@ -197,9 +200,142 @@
                 </div>
             </div>
         </div>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasRightLabel">Ticketübersicht</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body">
+
+                <ul class="nav nav-pills mb-3" id="pills-tab-ticket" role="tablist">
+                  {% if user.is_authenticated %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-status-tab" data-bs-toggle="pill" data-bs-target="#pills-status" type="button" role="tab" aria-controls="pills-status" aria-selected="true">Ticketstatus</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-logout-tab" data-bs-toggle="pill" data-bs-target="#pills-logout" type="button" role="tab" aria-controls="pills-logout" aria-selected="false">Account</button>
+                    </li>
+                  {% else %}
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Einloggen</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-signup-tab" data-bs-toggle="pill" data-bs-target="#pills-signup" type="button" role="tab" aria-controls="pills-signup" aria-selected="false">Anmelden</button>
+                  </li>
+                    {% endif %}
+                </ul>
+
+                <div class="tab-content" id="pills-tabContent">
+
+                  {% if user.is_authenticated %}
+                  <div class="tab-pane fade show active" id="pills-status" role="tabpanel" aria-labelledby="pills-status-tab">
+                    <p>Ticket: 25€</p>
+                    <p>Kontoinhaber: Clemens Richter</p>
+                    <p>IBAN: DE79 1309 1054 0008 2070 11</p>
+                    <p>Betreff: Talu, {{user.vorname}}, {{user.nachname}}</p>
+                    <p>Bezahlstatus: In Bearbeitung...</p>
+                </div>
+                <div class="tab-pane fade" id="pills-logout" role="tabpanel" aria-labelledby="pills-logout-tab">
+                    <form method="post">
+                    {% csrf_token %}
+                      <input type="hidden" id="form_goal" name="form_goal" value="logout">
+                      <button class="btn btn-dark" type="submit">Logout</button>
+                    </form>
+                  </div>
+                    {% else %}
+                  <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
+
+                    <form method="post">
+                      {% csrf_token %}
+                      {{ login_form.as_p }}
+                      <input type="hidden" id="form_goal" name="form_goal" value="login">
+                      <button class="btn btn-dark" type="submit">Einloggen</button>
+                    </form>
+
+                  </div>
+                  <div class="tab-pane fade" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
+                    <form method="post">
+                      {% csrf_token %}
+                      {{ signup_form.as_p }}
+                      <input type="hidden" id="form_goal" name="form_goal" value="signup">
+                      <button class="btn btn-dark" type="submit">Anmelden</button>
+                    </form>
+
+                    {% endif %}
+                  </div>
+                </div>
+                </div>
+            </div>
     </section> 
 
-    <script type="text/javascript">
+    {% if logout %}
+            }
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+
+                <h1 class="modal-title fs-5" id="logoutModalLabel">Erfolgreich ausgeloggt</h1>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <div class="modal-body">
+                Vielen Dank fürs Vorbeischauen. Bis zum nächsten Mal! 👋
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal" class="btn green-btn">Bis bald!</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+          <script type="text/javascript">
+
+            $(document).ready(function(){
+                $('#logoutModal').modal('show');
+            });
+
+          </script>
+          {% endif %}
+
+        {% if signup %}
+        <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+
+                <h1 class="modal-title fs-5" id="signUpModalLabel">Registrierung erfolgreich</h1>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+
+              <div class="modal-body">
+                Schön, dass Du dabei bist. Du hast jetzt eine E-Mail mit einem Aktivierungslink für Deinen Account erhalten. Erst nach erfolgreicher Aktivierung kannst Du Dich einloggen.
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal" class="btn green-btn">Alles klar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <script type="text/javascript">
+
+            $(document).ready(function(){
+                $('#signUpModal').modal('show');
+            });
+
+          </script>
+        {% endif %}
+        <script type="text/javascript">
 
         $(document).ready(function(){
             var searchParams = new URLSearchParams(window.location.search)
