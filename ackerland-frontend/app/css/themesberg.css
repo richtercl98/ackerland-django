@@ -11254,3 +11254,37 @@ td + td {
         color: white !important;
         background-color: #EE767A !important;
     }
+
+.text-underline-hover:hover {
+    text-decoration: underline !important;
+}
+
+
+.more-info-btn {
+  border: 1px solid #EE767A;
+  color: black;
+}
+
+.more-info-btn:hover {
+  background-color: white !important;
+  transition-duration: 200ms;
+}
+
+#more-info-btn-acts {
+  background-color: #EE767A;
+}
+
+#more-info-btn-acts:hover {
+  color: #EE767A !important;
+  border: 1px solid #EE767A;
+}
+
+#more-info-btn-workshop {
+  background-color: #D2D8F0;
+}
+
+
+#more-info-btn-workshop:hover {
+  color: #8999D2 !important;
+  border: 1px solid #D2D8F0;
+}

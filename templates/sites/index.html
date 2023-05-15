@@ -230,10 +230,13 @@
 
                             <ul class="programm-list fs-5 mb-2">
                                 {% for act in act_list %}
-                                    <li class="fs-5">{{act.stage_name}}</li>
+                                    <li class="fs-5"><a class="text-black text-decoration-none text-underline-hover" href="programm?active=acts">{{act.stage_name}}</a></li>
                                 {% endfor %}
                             </ul><br>
-                            <a class="text-muted text-center text-decoration-none fst-italic mb-1" href="programm?active=acts" style="font-size: 0.8em">mehr infos</a>
+                            <div class="d-flex justify-content-center">
+
+                                <a id="more-info-btn-acts" class="rounded more-info-btn text-center text-decoration-none mb-1 p-2" role="button" href="programm?active=acts" style="font-size: 0.8em">mehr infos</a>
+                            </div>
                         </div>
 
                     </div>
@@ -244,10 +247,12 @@
 
                             <ul class="programm-list fs-5 mb-2">
                                 {% for workshop in workshop_list %}
-                                    <li class="fs-5">{{workshop.name}}</li>
+                                    <li class="fs-5"><a class="text-black text-decoration-none text-underline-hover" href="programm?active=workshop">{{workshop.name}}</a></li>
                                 {% endfor %}
                             </ul><br>
-                            <a class="text-muted text-center text-decoration-none fst-italic mb-1" href="programm?active=workshop" style="font-size: 0.8em">mehr infos</a>
+                            <div class="d-flex justify-content-center">
+                                <a id="more-info-btn-workshop" class="rounded more-info-btn text-center text-decoration-none mb-1 p-2" href="programm?active=workshop" role="button" style="font-size: 0.8em">mehr infos</a>
+                            </div>
                         </div>
                         
                     </div>
